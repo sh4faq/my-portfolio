@@ -1,0 +1,23 @@
+# Claude Code settings
+.claude/
+
+# Backups
+*.backup
+*.old
+*.before-reorg
+*_reorganized.html
+*_visual.html
+
+# Python scripts
+reorganize.py
+fix_portfolio.py
+reorg_plan.txt
+temp_*.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

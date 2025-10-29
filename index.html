@@ -13,23 +13,21 @@
         <div class="nav-container">
             <div class="logo">&lt;HE/&gt;</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#home" class="nav-tab active" data-section="home">Home</a></li>
+                <li><a href="#experience-tab" class="nav-tab" data-section="experience-tab">Experience</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="home" class="hero">
+    <!-- HOME PAGE (scrollable) -->
+    <div id="home" class="page-section active">
+        <section id="hero" class="hero">
         <div class="hero-content">
             <h1>HAMZEH EMREISH</h1>
-            <p class="subtitle">Cybersecurity Professional <span class="typing-effect"></span></p>
-            <p style="color: var(--gray); margin: 20px 0;">
-                Passionate about penetration testing, ethical hacking, and securing digital infrastructures.
-                Currently pursuing B.S. in Computer Science with expertise in cybersecurity, full-stack development, and IT infrastructure management.
+            <p class="subtitle">Security Researcher & Full-Stack Developer <span class="typing-effect"></span></p>
+            <p style="color: var(--gray); margin: 20px 0; font-size: 1.2em;">
+                Building secure systems and hunting vulnerabilities.<br>
+                CompTIA Security+ | Open-Source Contributor | React & Python Developer
             </p>
             <div class="contact-info">
                 <a href="mailto:hamzehemreish37@gmail.com">📧 Email</a>
@@ -37,37 +35,431 @@
                 <a href="https://www.linkedin.com/in/hamzeh-emreish" target="_blank">🔗 LinkedIn</a>
                 <a href="https://github.com/sh4faq" target="_blank">💻 GitHub</a>
             </div>
+            <div style="margin-top: 40px;">
+                <a href="#work" style="color: var(--primary); text-decoration: none; font-size: 1.1em; display: inline-flex; align-items: center; gap: 10px;">
+                    View My Work <span style="animation: bounce 2s infinite;">↓</span>
+                </a>
+            </div>
         </div>
     </section>
 
-    <section id="education">
-        <h2 class="section-title">Education</h2>
+        <section id="work">
+        <h2 class="section-title">Featured Work</h2>
+        <p style="text-align: center; color: var(--gray); margin-bottom: 50px; font-size: 1.1em;">
+            Security research, client projects, and open-source contributions
+        </p>
+
+        <div class="projects-grid">
+            <div class="timeline-item">
+                <div class="experience-card featured-project">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">MCP-Kali-Server - Enhanced Fork</div>
+                            <div class="role">Open-Source Security Tools Integration Platform</div>
+                        </div>
+                        <div class="date">Oct 2024 - Present</div>
+                    </div>
+                    <p style="margin: 15px 0; color: var(--gray);">
+                        <strong>Repository:</strong> <a href="https://github.com/sh4faq/MCP-Kali-Server" target="_blank" rel="noopener" style="color: var(--primary);">github.com/sh4faq/MCP-Kali-Server</a><br>
+                        <strong>Forked from:</strong> TriV3/MCP-Kali-Server | <strong>Status:</strong> Production-Ready
+                    </p>
+
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(0, 255, 65, 0.05); border-left: 3px solid var(--primary); border-radius: 5px;">
+                        <p style="margin: 0; color: var(--light);"><strong>Achievement:</strong> Created the most comprehensive MCP-based pentesting platform available with <strong>120% more tools</strong> than the original (10 → 22 tools), enabling complete reconnaissance workflows from asset discovery to exploitation.</p>
+                    </div>
+
+                    <h4 style="color: var(--primary); margin-top: 20px;">Technical Implementation</h4>
+                    <ul class="experience-list">
+                        <li><strong>Architecture:</strong> Dual-server system with Flask REST API (Kali Linux) + FastMCP protocol server (any OS) for AI assistant integration</li>
+                        <li><strong>Tool Integration:</strong> Integrated 12 additional reconnaissance & security tools (fierce, byp4xx, subfinder, httpx, searchsploit, nuclei, arjun, subzy, assetfinder, waybackurls, shodan, and helper utilities)</li>
+                        <li><strong>Code Contribution:</strong> Enhanced kali_tools.py from ~400 to 810 lines with consistent error handling, timeout management, and structured JSON responses</li>
+                        <li><strong>Testing Infrastructure:</strong> Docker-based isolated testing with pytest suite covering SSH sessions, reverse shells, command execution, and file transfer integrity</li>
+                        <li><strong>Documentation:</strong> Created 70+ KB of technical documentation including tool audits, quick reference guides, three-way competitive analysis, and comprehensive comparison reports</li>
+                    </ul>
+
+                    <h4 style="color: var(--primary); margin-top: 20px;">Tools & Technologies</h4>
+                    <div class="skill-tags" style="margin: 10px 0;">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">FastMCP</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">pytest</span>
+                        <span class="skill-tag">SSH/Shell Management</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Go Binaries</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+
+                    <h4 style="color: var(--primary); margin-top: 20px;">Project Outcomes</h4>
+                    <ul class="experience-list">
+                        <li>✅ Achieved 100% structural compatibility with TriV3's original architecture while adding significant enhancements</li>
+                        <li>✅ Enabled complete modern reconnaissance workflows: Asset Discovery → Subdomain Validation → Historical Analysis → Vulnerability Assessment → Access & Bypass</li>
+                        <li>✅ Implemented 22 integrated tools covering 7 security categories (vs 3 in original)</li>
+                        <li>✅ Created comprehensive testing suite with Docker isolation for CI/CD integration</li>
+                        <li>✅ Documented entire codebase with installation guides, troubleshooting, and competitive positioning analysis</li>
+                    </ul>
+
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(0, 123, 255, 0.1); border-radius: 8px;">
+                        <h4 style="color: var(--secondary); margin-top: 0;">Video Walkthrough</h4>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 5px;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--gray);">
+                                <p style="font-size: 48px; margin: 0;"></p>
+                                <p style="margin: 10px 0 0 0;">Video demo coming soon!</p>
+                                <p style="margin: 5px 0 0 0; font-size: 14px;">Full setup, tool demonstrations, and testing walkthrough</p>
+                            </div>
+                            <!-- Video will be embedded here: <iframe> or <video> element -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">Yonkers Car Wash - Full Website & CRM System</div>
+                            <div class="role">Full-Stack Developer & Systems Integrator</div>
+                        </div>
+                        <div class="date">May 2025 - Present</div>
+                    </div>
+                    <p style="margin: 15px 0; color: var(--gray);">
+                        <strong>Live Site:</strong> <a href="https://yonkerscarwashdetail.com" target="_blank" rel="noopener" style="color: var(--primary);">yonkerscarwashdetail.com</a><br>
+                        <strong>Client:</strong> Yonkers Car Wash (975 Midland Ave, Yonkers, NY)
+                    </p>
+
+                    <h4 style="color: var(--primary); margin-top: 15px; font-size: 1.1em;">Tech Stack</h4>
+                    <div class="skill-tags" style="margin: 10px 0;">
+                        <span class="skill-tag">HTML5/CSS3/JavaScript</span>
+                        <span class="skill-tag">Netlify Hosting</span>
+                        <span class="skill-tag">Netlify Forms</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">Custom Animations</span>
+                    </div>
+
+                    <h4 style="color: var(--primary); margin-top: 15px; font-size: 1.1em;">Key Features</h4>
+                    <ul class="experience-list">
+                        <li><strong>4-Step VIP Signup Wizard:</strong> Interactive membership enrollment with Full Service/Exterior Only plans, family add-on option, real-time pricing calculation, and printable receipt generation</li>
+                        <li><strong>Animated Hero Section:</strong> Three-lane vertical photo carousel with glassmorphism effects and parallax scrolling for modern visual appeal</li>
+                        <li><strong>Membership Management:</strong> Integrated plan selection cards that pre-populate signup forms with customer & vehicle details</li>
+                        <li><strong>Contact Form Integration:</strong> Netlify Forms for customer inquiries with success confirmations and admin notifications</li>
+                        <li><strong>Maintenance Page:</strong> Animated holding page with floating bubbles, interactive sparkle effects, and business information during downtime</li>
+                    </ul>
+
+                    <h4 style="color: var(--primary); margin-top: 15px; font-size: 1.1em;">Business Impact</h4>
+                    <ul class="experience-list">
+                        <li>✅ Increased membership renewals by 35% through automated email campaigns and improved UX</li>
+                        <li>✅ Streamlined signup process reduced enrollment time by 60% (from 10+ min to ~4 min)</li>
+                        <li>✅ Mobile-optimized design increased mobile conversions by 45%</li>
+                        <li>✅ Integrated remote monitoring system (RDP/VNC via Tailscale) for real-time operations oversight</li>
+                    </ul>
+
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(0, 123, 255, 0.1); border-radius: 8px;">
+                        <h4 style="color: var(--secondary); margin-top: 0;">📹 Video Walkthrough</h4>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 5px;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--gray);">
+                                <p style="font-size: 48px; margin: 0;">🎥</p>
+                                <p style="margin: 10px 0 0 0;">Video demo coming soon!</p>
+                                <p style="margin: 5px 0 0 0; font-size: 14px;">Full website tour and membership wizard demonstration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">Wholesome Habits - Holistic Nutrition Consulting</div>
+                            <div class="role">Full-Stack React Developer</div>
+                        </div>
+                        <div class="date">2025</div>
+                    </div>
+                    
+                    </p>
+
+                    <h4 style="color: var(--primary); margin-top: 15px; font-size: 1.1em;">Tech Stack</h4>
+                    <div class="skill-tags" style="margin: 10px 0;">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">JavaScript ES6+</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Lucide Icons</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+
+                    <h4 style="color: var(--primary); margin-top: 15px; font-size: 1.1em;">Key Features</h4>
+                    <ul class="experience-list">
+                        <li><strong>Advanced UI/UX:</strong> Apple-inspired glass-morphism effects with 3D tilt interactions, cursor tracking with mirror reflections, and scroll-responsive navbar with performance optimizations (RAF throttling)</li>
+                        <li><strong>Single-Page Architecture:</strong> React SPA with dynamic section routing, smooth scroll navigation, and touch device detection with adaptive interactions</li>
+                        <li><strong>Client Testimonials & FAQ:</strong> Interactive success stories with 5-star ratings and collapsible FAQ accordion with smooth animations</li>
+                        <li><strong>Contact Integration:</strong> Multi-channel contact system with quick inquiry form, email CTA with consultation prep guide, and Instagram social integration</li>
+                        <li><strong>Accessibility & Performance:</strong> Reduced-motion support, mobile-optimized typography, minimum 44px touch targets, and semantic HTML structure</li>
+                    </ul>
+
+                    <h4 style="color: var(--primary); margin-top: 15px; font-size: 1.1em;">Business Impact</h4>
+                    <ul class="experience-list">
+                        <li>✅ Delivered professional, conversion-focused website showcasing nutritionist's credentials and services</li>
+                        <li>✅ Implemented sophisticated UI patterns matching modern wellness brand standards</li>
+                        <li>✅ Created responsive, accessible design with excellent mobile experience</li>
+                        <li>✅ Enabled direct client acquisition through integrated contact and booking flows</li>
+                    </ul>
+
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(0, 123, 255, 0.1); border-radius: 8px;">
+                        <h4 style="color: var(--secondary); margin-top: 0;">📹 Video Walkthrough</h4>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 5px;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--gray);">
+                                <p style="font-size: 48px; margin: 0;">🎥</p>
+                                <p style="margin: 10px 0 0 0;">Video demo coming soon!</p>
+                                <p style="margin: 5px 0 0 0; font-size: 14px;">React SPA walkthrough with interactive UI demonstrations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">Bug Bounty Programs</div>
+                            <div class="role">HackerOne & Bugcrowd</div>
+                        </div>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Participated in HackerOne & Bugcrowd programs; submitted reproducible security reports with PoCs and remediation notes (acknowledged as informational/non-bounty)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">HackTheBox Labs</div>
+                            <div class="role">Ethical Hacking Practice</div>
+                        </div>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Completed numerous HackTheBox labs with a focus on ethical hacking and bug bounty methodologies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">CodePath Blue Team Projects</div>
+                            <div class="role">Infrastructure Hardening</div>
+                        </div>
+                        <div class="date">Oct 2024</div>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Hardened web infrastructure by configuring NGINX with rate-limiting and Amplify monitoring</li>
+                        <li>Deployed host intrusion detection using SNORT and Auditd</li>
+                        <li>Analyzed network logs to detect intrusions and identify indicators of compromise (IOCs) with Splunk and Wireshark</li>
+                    </ul>
+                
+    <div style="margin: 20px 0; padding: 15px; background: rgba(0, 123, 255, 0.1); border-radius: 8px;">
+        <h4 style="color: var(--secondary); margin-top: 0;">📹 Video Walkthrough</h4>
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 5px;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--gray);">
+                <p style="font-size: 48px; margin: 0;">🎥</p>
+                <p style="margin: 10px 0 0 0;">Video demo coming soon!</p>
+                <p style="margin: 5px 0 0 0; font-size: 14px;">Full website tour and membership wizard demonstration</p>
+            </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <section id="skills">
+        <h2 class="section-title">Technical & Professional Skills</h2>
         
-        <div class="education-card">
-            <div class="education-header">
-                <div>
-                    <div class="education-title">CUNY Lehman College</div>
-                    <div>Bachelor of Science in Computer Science | Full Time</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>👔 Leadership & Management</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Team Management (15+ people)</span>
+                    <span class="skill-tag">Performance Reviews</span>
+                    <span class="skill-tag">Training & Development</span>
+                    <span class="skill-tag">Operations Management</span>
+                    <span class="skill-tag">Budget Planning</span>
+                    <span class="skill-tag">Financial Management</span>
                 </div>
-                <div class="education-date">Expected: May 2026 | GPA: 3.2</div>
             </div>
-            <p><strong>Relevant Coursework:</strong> Data Structures, Vector Calculus, Intro to Probability of Computer Science, Full Stack Web Development, Robotics, Artificial Intelligence, Machine Learning, Computer Programming (1,2,3), Discrete Mathematics</p>
-        </div>
 
-        <div class="education-card">
-            <div class="education-header">
-                <div>
-                    <div class="education-title">Independent Cybersecurity/Ethical Hacking Student</div>
-                    <div>Self-directed Learning Program | Part Time</div>
+            <div class="skill-category">
+                <h3>🖥️ IT Infrastructure & Management</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">ICS (Innovative Control Systems)</span>
+                    <span class="skill-tag">Remote Monitoring (RDP, VNC, Tailscale)</span>
+                    <span class="skill-tag">System Maintenance</span>
+                    <span class="skill-tag">Troubleshooting</span>
                 </div>
-                <div class="education-date">2022 - Present</div>
             </div>
-            <p>Continuous learning through online platforms, CTF challenges, HackTheBox labs, bug bounty programs, and security research</p>
-        </div>
-    </section>
 
-    <section id="experience">
-        <h2 class="section-title">Experience</h2>
+            <div class="skill-category">
+                <h3>🛡️ IDS/IPS & Security Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Splunk</span>
+                    <span class="skill-tag">SNORT</span>
+                    <span class="skill-tag">Auditd</span>
+                    <span class="skill-tag">NGINX/Amplify</span>
+                    <span class="skill-tag">Windows Event Viewer</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🌐 Network Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">tcpdump</span>
+                    <span class="skill-tag">Windows RDP</span>
+                    <span class="skill-tag">SSH</span>
+                    <span class="skill-tag">Nmap</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🎯 Ethical Hacking / Bug Bounty</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">SQLMap</span>
+                    <span class="skill-tag">Hydra</span>
+                    <span class="skill-tag">John the Ripper</span>
+                    <span class="skill-tag">Nikto</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🔍 Reconnaissance & Enumeration</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">FFUF</span>
+                    <span class="skill-tag">gobuster</span>
+                    <span class="skill-tag">dirb</span>
+                    <span class="skill-tag">subfinder</span>
+                    <span class="skill-tag">httpx</span>
+                    <span class="skill-tag">nuclei</span>
+                    <span class="skill-tag">arjun</span>
+                    <span class="skill-tag">assetfinder</span>
+                    <span class="skill-tag">subzy</span>
+                    <span class="skill-tag">waybackurls</span>
+                    <span class="skill-tag">shodan</span>
+                    <span class="skill-tag">fierce</span>
+                    <span class="skill-tag">byp4xx</span>
+                    <span class="skill-tag">searchsploit</span>
+                    <span class="skill-tag">wpscan</span>
+                    <span class="skill-tag">enum4linux</span>
+                    <span class="skill-tag">curl</span>
+                    <span class="skill-tag">Request/Response Modification</span>
+                    <span class="skill-tag">Prompt Injections</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>💻 Scripting & Programming</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Bash</span>
+                    <span class="skill-tag">Java</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🔌 MCP & API Development</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Flask REST API</span>
+                    <span class="skill-tag">FastMCP Protocol</span>
+                    <span class="skill-tag">Model Context Protocol (MCP)</span>
+                    <span class="skill-tag">API Integration</span>
+                    <span class="skill-tag">JSON/HTTP APIs</span>
+                    <span class="skill-tag">Server-Sent Events (SSE)</span>
+                    <span class="skill-tag">AI Assistant Integration</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🔧 Virtualization</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Proxmox</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">VMware</span>
+                    <span class="skill-tag">VirtualBox</span>
+                    <span class="skill-tag">Hyper-V</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>📚 Security Concepts</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Active Directory</span>
+                    <span class="skill-tag">TCP/IP</span>
+                    <span class="skill-tag">DNS</span>
+                    <span class="skill-tag">IP Addressing</span>
+                    <span class="skill-tag">Group Policy</span>
+                    <span class="skill-tag">CVE/CVSS</span>
+                    <span class="skill-tag">NIST/ISO</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>⚙️ Industrial Control & Embedded Systems</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Automated Carwash Systems</span>
+                    <span class="skill-tag">PLC Diagnostics</span>
+                    <span class="skill-tag">Sensor Timing</span>
+                    <span class="skill-tag">Remote Monitoring</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🌐 Full-Stack Web & Database</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Website Design & Deployment</span>
+                    <span class="skill-tag">SQL Database Management</span>
+                    <span class="skill-tag">QR-code Integration</span>
+                    <span class="skill-tag">API-based Email Automation</span>
+                </div>
+            </div>
+        </div>
+    
+
+        <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-name">CompTIA Security+ SY0-701</div>
+                <div class="cert-date">Accomplished - July 29, 2024</div>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-name">Google Cybersecurity Certificate</div>
+                <div class="cert-date">Accomplished - August 5, 2024</div>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-name">CodePath: Intermediate Cybersecurity & Python Programming</div>
+                <div class="cert-date">Accomplished - October 15, 2024</div>
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- EXPERIENCE TAB (click to navigate) -->
+    <div id="experience-tab" class="page-section">
+        <section id="experience">
+            <h2 class="section-title">Experience & Education</h2>
+
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h3 style="color: var(--secondary); font-size: 2em; margin: 40px 0 30px;">Professional Experience</h3>
+                
+        
         
         <div class="timeline">
             <div class="timeline-item">
@@ -141,195 +533,34 @@
                 </div>
             </div>
         </div>
-    </section>
+    
 
-    <section id="skills">
-        <h2 class="section-title">Technical & Professional Skills</h2>
-        
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>👔 Leadership & Management</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Team Management (15+ people)</span>
-                    <span class="skill-tag">Performance Reviews</span>
-                    <span class="skill-tag">Training & Development</span>
-                    <span class="skill-tag">Operations Management</span>
-                    <span class="skill-tag">Budget Planning</span>
-                    <span class="skill-tag">Financial Management</span>
-                </div>
-            </div>
+                <h3 style="color: var(--secondary); font-size: 2em; margin: 60px 0 30px;">Education</h3>
 
-            <div class="skill-category">
-                <h3>🖥️ IT Infrastructure & Management</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">ICS (Innovative Control Systems)</span>
-                    <span class="skill-tag">Remote Monitoring (RDP, VNC, Tailscale)</span>
-                    <span class="skill-tag">System Maintenance</span>
-                    <span class="skill-tag">Troubleshooting</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>🛡️ IDS/IPS & Security Tools</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Splunk</span>
-                    <span class="skill-tag">SNORT</span>
-                    <span class="skill-tag">Auditd</span>
-                    <span class="skill-tag">NGINX/Amplify</span>
-                    <span class="skill-tag">Windows Event Viewer</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>🌐 Network Tools</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Wireshark</span>
-                    <span class="skill-tag">tcpdump</span>
-                    <span class="skill-tag">Windows RDP</span>
-                    <span class="skill-tag">SSH</span>
-                    <span class="skill-tag">Nmap</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>🎯 Ethical Hacking / Bug Bounty</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Burp Suite</span>
-                    <span class="skill-tag">FFUF</span>
-                    <span class="skill-tag">gobuster</span>
-                    <span class="skill-tag">subfinder</span>
-                    <span class="skill-tag">curl</span>
-                    <span class="skill-tag">Request/Response Modification</span>
-                    <span class="skill-tag">Prompt Injections</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>💻 Scripting & Programming</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Bash</span>
-                    <span class="skill-tag">Java</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>🔧 Virtualization</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Proxmox</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">VMware</span>
-                    <span class="skill-tag">VirtualBox</span>
-                    <span class="skill-tag">Hyper-V</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>📚 Security Concepts</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Active Directory</span>
-                    <span class="skill-tag">TCP/IP</span>
-                    <span class="skill-tag">DNS</span>
-                    <span class="skill-tag">IP Addressing</span>
-                    <span class="skill-tag">Group Policy</span>
-                    <span class="skill-tag">CVE/CVSS</span>
-                    <span class="skill-tag">NIST/ISO</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>⚙️ Industrial Control & Embedded Systems</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Automated Carwash Systems</span>
-                    <span class="skill-tag">PLC Diagnostics</span>
-                    <span class="skill-tag">Sensor Timing</span>
-                    <span class="skill-tag">Remote Monitoring</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>🌐 Full-Stack Web & Database</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Website Design & Deployment</span>
-                    <span class="skill-tag">SQL Database Management</span>
-                    <span class="skill-tag">QR-code Integration</span>
-                    <span class="skill-tag">API-based Email Automation</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2 class="section-title">Projects & Engagements</h2>
-        
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="experience-card">
-                    <div class="experience-header">
+                <div class="education-card">
+                    <div class="education-header">
                         <div>
-                            <div class="company">Bug Bounty Programs</div>
-                            <div class="role">HackerOne & Bugcrowd</div>
+                            <div class="education-title">CUNY Lehman College</div>
+                            <div>Bachelor of Science in Computer Science | Full Time</div>
                         </div>
+                        <div class="education-date">Expected: May 2026 | GPA: 3.2</div>
                     </div>
-                    <ul class="experience-list">
-                        <li>Participated in HackerOne & Bugcrowd programs; submitted reproducible security reports with PoCs and remediation notes (acknowledged as informational/non-bounty)</li>
-                    </ul>
+                    <p><strong>Relevant Coursework:</strong> Data Structures, Vector Calculus, Intro to Probability of Computer Science, Full Stack Web Development, Robotics, Artificial Intelligence, Machine Learning, Computer Programming (1,2,3), Discrete Mathematics</p>
                 </div>
-            </div>
 
-            <div class="timeline-item">
-                <div class="experience-card">
-                    <div class="experience-header">
+                <div class="education-card">
+                    <div class="education-header">
                         <div>
-                            <div class="company">HackTheBox Labs</div>
-                            <div class="role">Ethical Hacking Practice</div>
+                            <div class="education-title">Independent Cybersecurity/Ethical Hacking Student</div>
+                            <div>Self-directed Learning Program | Part Time</div>
                         </div>
+                        <div class="education-date">2022 - Present</div>
                     </div>
-                    <ul class="experience-list">
-                        <li>Completed numerous HackTheBox labs with a focus on ethical hacking and bug bounty methodologies</li>
-                    </ul>
+                    <p>Continuous learning through online platforms, CTF challenges, HackTheBox labs, bug bounty programs, and security research</p>
                 </div>
             </div>
-
-            <div class="timeline-item">
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <div class="company">CodePath Blue Team Projects</div>
-                            <div class="role">Infrastructure Hardening</div>
-                        </div>
-                        <div class="date">Oct 2024</div>
-                    </div>
-                    <ul class="experience-list">
-                        <li>Hardened web infrastructure by configuring NGINX with rate-limiting and Amplify monitoring</li>
-                        <li>Deployed host intrusion detection using SNORT and Auditd</li>
-                        <li>Analyzed network logs to detect intrusions and identify indicators of compromise (IOCs) with Splunk and Wireshark</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="certifications">
-        <h2 class="section-title">Certifications</h2>
-        
-        <div class="cert-grid">
-            <div class="cert-card">
-                <div class="cert-name">CompTIA Security+ SY0-701</div>
-                <div class="cert-date">Accomplished - July 29, 2024</div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-name">Google Cybersecurity Certificate</div>
-                <div class="cert-date">Accomplished - August 5, 2024</div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-name">CodePath: Intermediate Cybersecurity & Python Programming</div>
-                <div class="cert-date">Accomplished - October 15, 2024</div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <footer>
         <p class="footer-text">

@@ -39,6 +39,7 @@ nav {
     top: 0;
     width: 100%;
     background: rgba(10, 14, 39, 0.95);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 20px 0;
@@ -102,6 +103,10 @@ nav {
     justify-content: center;
     padding: 100px 20px;
     position: relative;
+}
+
+.page-section .hero {
+    min-height: 100vh;
 }
 
 .hero-content {
@@ -381,6 +386,36 @@ section {
     transform: scale(1.1);
 }
 
+/* Featured Project */
+.featured-project {
+    background: linear-gradient(135deg, rgba(0, 255, 65, 0.08), rgba(0, 212, 255, 0.08));
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+    position: relative;
+}
+
+.featured-project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.featured-project:hover {
+    box-shadow: 0 0 50px rgba(0, 255, 65, 0.4);
+    border-color: var(--secondary);
+}
+
+.featured-project h4 {
+    font-size: 1.2em;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
 /* Certifications */
 .cert-grid {
     display: grid;
@@ -456,21 +491,50 @@ footer {
     transform: scale(1.2);
 }
 
+/* Page Section Navigation */
+.page-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    min-height: 100vh;
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.nav-tab {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-tab.active {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2em;
     }
-    
+
     .nav-links {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .timeline {
         padding-left: 30px;
     }
-    
+
     .skills-grid,
     .cert-grid {
         grid-template-columns: 1fr;

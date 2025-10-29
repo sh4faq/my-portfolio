@@ -36,14 +36,50 @@ function draw() {
 
 setInterval(draw, 35);
 
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+// Tab Navigation System
+document.addEventListener('DOMContentLoaded', () => {
+    const navTabs = document.querySelectorAll('.nav-tab');
+    const pageSections = document.querySelectorAll('.page-section');
+
+    function showSection(sectionId) {
+        // Hide all sections
+        pageSections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+        });
+
+        // Show selected section
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+            setTimeout(() => targetSection.classList.add('active'), 10);
+        }
+
+        // Update nav active state
+        navTabs.forEach(tab => tab.classList.remove('active'));
+        const activeTab = document.querySelector(`[data-section="${sectionId}"]`);
+        if (activeTab) activeTab.classList.add('active');
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Handle nav tab clicks
+    navTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = tab.getAttribute('data-section');
+            showSection(sectionId);
+            // Update URL hash without jumping
+            history.pushState(null, null, `#${sectionId}`);
         });
     });
+
+    // Handle direct URL hash navigation
+    if (window.location.hash) {
+        const sectionId = window.location.hash.substring(1);
+        showSection(sectionId);
+    }
 });
 
 // Typing effect
