@@ -520,6 +520,136 @@ footer {
     text-shadow: 0 0 10px var(--primary);
 }
 
+/* Hero Description */
+.hero-description {
+    color: var(--gray);
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+
+/* Work CTA Button */
+.work-cta-container {
+    margin-top: 40px;
+}
+
+.work-cta-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bounce-arrow {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Section Description */
+.section-description {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 50px;
+    font-size: 1.1em;
+}
+
+/* Highlight Box */
+.highlight-box {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.highlight-box-primary {
+    background: rgba(0, 255, 65, 0.05);
+    border-left: 3px solid var(--primary);
+}
+
+.highlight-text {
+    margin: 0;
+    color: var(--light);
+}
+
+/* Section Subheadings */
+.section-subheading {
+    color: var(--primary);
+    margin-top: 20px;
+}
+
+.section-subheading-large {
+    color: var(--primary);
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+/* Skill Tags Variants */
+.skill-tags-project {
+    margin: 10px 0;
+}
+
+.skill-tags-spacing {
+    margin: 10px 0;
+}
+
+/* Video Container */
+.video-container {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 8px;
+}
+
+.video-title {
+    color: var(--secondary);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: 5px;
+}
+
+.video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Project Meta */
+.project-meta {
+    margin: 15px 0;
+    color: var(--gray);
+}
+
+/* Link Primary */
+.link-primary {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.link-primary:hover {
+    text-decoration: underline;
+}
+
+/* Footer Copyright */
+.footer-copyright {
+    margin-top: 30px;
+    color: var(--gray);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .hero h1 {
