@@ -32,7 +32,7 @@
                 <div class="contact-info">
                     <a href="https://www.linkedin.com/in/hamzeh-emreish" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <a href="https://github.com/sh4faq" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="Hamzeh_Emreish_Resume_Portfolio.pdf" download>Download Resume</a>
+                    <a href="Hamzeh_Emreish_Resume.pdf" download>Download Resume</a>
                 </div>
                 <div class="work-cta-container">
                     <a href="#work" class="work-cta-link">
@@ -146,6 +146,100 @@
                     <div class="experience-card">
                         <div class="experience-header">
                             <div>
+                                <div class="company">Bug Bounty Hunter</div>
+                                <div class="role">HackerOne & Bugcrowd</div>
+                            </div>
+                            <div class="date">Jan 2024 - Present</div>
+                        </div>
+                        <div class="highlight-box highlight-box-primary">
+                            <p class="highlight-text">Active bug bounty hunter with triaged findings across multiple programs. Focus on authentication bypasses, misconfigurations, and API security.</p>
+                        </div>
+                        <h4 class="section-subheading">Triaged Findings</h4>
+                        <ul class="experience-list">
+                            <li><strong>Mail Relay Vulnerability (Medium, Triaged Valid):</strong> Identified unauthenticated mail relay enabling email spoofing with valid DKIM/SPF signatures; provided CVSS analysis and remediation guidance</li>
+                            <li><strong>Hardcoded API Credentials (High, Duplicate):</strong> Discovered CWE-798 vulnerability exposing production endpoints</li>
+                            <li><strong>Admin User Enumeration (High, Duplicate):</strong> Found user enumeration via Cognito ForgotPassword API response differences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">Flash MMO Protocol Reverse Engineering</div>
+                                <div class="role">Network Security Analysis & Binary RE</div>
+                            </div>
+                            <div class="date">Jan 2025</div>
+                        </div>
+                        <p class="project-meta">
+                            <strong>Type:</strong> Security Research / Reverse Engineering
+                        </p>
+
+                        <div class="highlight-box highlight-box-primary">
+                            <p class="highlight-text">Analyzed a multiplayer Flash game's security architecture to understand how client-server communication works and identify potential vulnerabilities in legacy game systems.</p>
+                        </div>
+
+                        <h4 class="section-subheading">What I Did</h4>
+                        <ul class="experience-list">
+                            <li>Captured and analyzed network traffic using Wireshark to reverse-engineer SmartFoxServer XML/CDATA/JSON protocol</li>
+                            <li>Used Cheat Engine for memory inspection and runtime analysis</li>
+                            <li>Decompiled SWF files with JPEXS to extract ActionScript source code</li>
+                            <li>Analyzed DLLs in Ghidra to understand native code components</li>
+                            <li>Identified client-side anti-cheat bypass using MD5 + hardcoded salt</li>
+                            <li>Documented Electron + Pepper Flash architecture</li>
+                        </ul>
+
+                        <h4 class="section-subheading">Tech Used</h4>
+                        <div class="skill-tags skill-tags-spacing">
+                            <span class="skill-tag">Wireshark</span>
+                            <span class="skill-tag">Ghidra</span>
+                            <span class="skill-tag">Cheat Engine</span>
+                            <span class="skill-tag">JPEXS Decompiler</span>
+                            <span class="skill-tag">Protocol Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">Game Asset Reverse Engineering Toolkit</div>
+                                <div class="role">Binary Format Analysis & Blender Addon</div>
+                            </div>
+                            <div class="date">Dec 2024</div>
+                        </div>
+                        <p class="project-meta">
+                            <strong>Repository:</strong> <a href="https://github.com/sh4faq/MentalOmega-Modding-Guide" target="_blank" rel="noopener noreferrer" class="link-primary">github.com/sh4faq/MentalOmega-Modding-Guide</a><br>
+                            <strong>Type:</strong> Reverse Engineering / Game Modding
+                        </p>
+
+                        <div class="highlight-box highlight-box-primary">
+                            <p class="highlight-text">Wanted to add custom units to Red Alert 2 mods but the file formats weren't documented anywhere. So I reverse-engineered them myself and wrote a Blender exporter.</p>
+                        </div>
+
+                        <h4 class="section-subheading">What I Did</h4>
+                        <ul class="experience-list">
+                            <li>Figured out the VXL (voxel), HVA (animation), and MIX (archive) formats by staring at hex dumps</li>
+                            <li>Built a Blender addon that exports 3D models to VXL format</li>
+                            <li>Wrote a modding guide so other people don't have to go through the same pain</li>
+                        </ul>
+
+                        <h4 class="section-subheading">Tech Used</h4>
+                        <div class="skill-tags skill-tags-spacing">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Blender API</span>
+                            <span class="skill-tag">Hex Editing</span>
+                            <span class="skill-tag">Reverse Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
                                 <div class="company">Full-Stack Merchant System</div>
                                 <div class="role">PERN Stack Web Application</div>
                             </div>
@@ -186,41 +280,6 @@
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <div>
-                                <div class="company">Game Asset Reverse Engineering Toolkit</div>
-                                <div class="role">Binary Format Analysis & Blender Addon</div>
-                            </div>
-                            <div class="date">Dec 2024</div>
-                        </div>
-                        <p class="project-meta">
-                            <strong>Repository:</strong> <a href="https://github.com/sh4faq/MentalOmega-Modding-Guide" target="_blank" rel="noopener noreferrer" class="link-primary">github.com/sh4faq/MentalOmega-Modding-Guide</a><br>
-                            <strong>Type:</strong> Reverse Engineering / Game Modding
-                        </p>
-
-                        <div class="highlight-box highlight-box-primary">
-                            <p class="highlight-text">Wanted to add custom units to Red Alert 2 mods but the file formats weren't documented anywhere. So I reverse-engineered them myself and wrote a Blender exporter.</p>
-                        </div>
-
-                        <h4 class="section-subheading">What I Did</h4>
-                        <ul class="experience-list">
-                            <li>Figured out the VXL (voxel), HVA (animation), and MIX (archive) formats by staring at hex dumps</li>
-                            <li>Built a Blender addon that exports 3D models to VXL format</li>
-                            <li>Wrote a modding guide so other people don't have to go through the same pain</li>
-                        </ul>
-
-                        <h4 class="section-subheading">Tech Used</h4>
-                        <div class="skill-tags skill-tags-spacing">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Blender API</span>
-                            <span class="skill-tag">Hex Editing</span>
-                            <span class="skill-tag">Reverse Engineering</span>
                         </div>
                     </div>
                 </div>
@@ -326,20 +385,6 @@
                                 </video>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <div>
-                                <div class="company">Bug Bounty Programs</div>
-                                <div class="role">HackerOne & Bugcrowd</div>
-                            </div>
-                        </div>
-                        <ul class="experience-list">
-                            <li>Participated in HackerOne & Bugcrowd programs; submitted reproducible security reports with PoCs and remediation notes (acknowledged as informational/non-bounty)</li>
-                        </ul>
                     </div>
                 </div>
 
@@ -465,8 +510,24 @@
                     <h3>💻 Scripting & Programming</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">Bash</span>
                         <span class="skill-tag">Java</span>
+                        <span class="skill-tag">REST API Development</span>
+                        <span class="skill-tag">Security Automation Scripts</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔬 Reverse Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Ghidra</span>
+                        <span class="skill-tag">Cheat Engine</span>
+                        <span class="skill-tag">Binary/Hex Analysis</span>
+                        <span class="skill-tag">Protocol Analysis</span>
+                        <span class="skill-tag">Struct-based Parsing</span>
+                        <span class="skill-tag">Blender Python API</span>
+                        <span class="skill-tag">JPEXS Decompiler</span>
                     </div>
                 </div>
 
@@ -485,13 +546,14 @@
                 </div>
 
                 <div class="skill-category">
-                    <h3>🔧 Virtualization</h3>
+                    <h3>🔧 Virtualization & Containers</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Proxmox</span>
                         <span class="skill-tag">Docker</span>
                         <span class="skill-tag">VMware</span>
                         <span class="skill-tag">VirtualBox</span>
                         <span class="skill-tag">Hyper-V</span>
+                        <span class="skill-tag">VPS</span>
                     </div>
                 </div>
 
@@ -519,11 +581,17 @@
                 </div>
 
                 <div class="skill-category">
-                    <h3>🌐 Full-Stack Web & Database</h3>
+                    <h3>🌐 Full-Stack Web Development</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Website Design & Deployment</span>
-                        <span class="skill-tag">SQL Database Management</span>
-                        <span class="skill-tag">QR-code Integration</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Vite</span>
+                        <span class="skill-tag">Full-Stack Deployment</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">Railway</span>
                     </div>
                 </div>
             </div>
@@ -618,16 +686,16 @@
                         <div class="experience-card">
                             <div class="experience-header">
                                 <div>
-                                    <div class="company">HackerOne + PortSwigger Web Security Academy</div>
-                                    <div class="role">Bug Bounty / Labs</div>
+                                    <div class="company">Bug Bounty Hunter</div>
+                                    <div class="role">HackerOne / Bugcrowd</div>
                                 </div>
                                 <div class="date">Jan 2024 - Present</div>
                             </div>
                             <ul class="experience-list">
-                                <li>Completed hands-on labs focused on real-world Ethical Hacking challenges, enhancing skills in Privilege Escalation, SQL Injections, and Auth Bypass</li>
-                                <li>Gained practical experience in penetration testing, vulnerability assessment, and ethical hacking techniques</li>
-                                <li>Developed and refined skills in system exploitation, privilege escalation, and secure system configuration</li>
-                                <li>Applied knowledge of security tools and methodologies in simulated environments to identify and mitigate threats</li>
+                                <li>Identified unauthenticated mail relay vulnerability (<strong>Medium severity, triaged valid</strong>) enabling email spoofing with valid DKIM/SPF signatures; provided CVSS analysis and remediation guidance</li>
+                                <li>Discovered hardcoded API credentials (CWE-798) exposing production endpoints (<strong>High-severity</strong>, triaged as duplicate)</li>
+                                <li>Found admin user enumeration via Cognito ForgotPassword API (<strong>High-severity</strong>, triaged as duplicate)</li>
+                                <li>Completed PortSwigger Web Security Academy labs focused on SQL Injection, Auth Bypass, and Privilege Escalation</li>
                             </ul>
                         </div>
                     </div>
@@ -641,7 +709,7 @@
                             <div class="education-title">CUNY Lehman College</div>
                             <div>Bachelor of Science in Computer Science | Full Time</div>
                         </div>
-                        <div class="education-date">Expected: May 2026 | GPA: 3.2</div>
+                        <div class="education-date">Expected: May 2026 | GPA: 3.4</div>
                     </div>
                     <p><strong>Relevant Coursework:</strong> Data Structures, Vector Calculus, Intro to Probability of Computer Science, Full Stack Web Development, Robotics, Artificial Intelligence, Machine Learning, Computer Programming (1,2,3), Discrete Mathematics</p>
                 </div>
