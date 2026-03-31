@@ -150,8 +150,8 @@
                             <a href="https://full-stack-pern-app.vercel.app" target="_blank" rel="noopener noreferrer" class="showcase-link-primary">Live Demo</a>
                         </div>
                     </div>
-                    <div class="showcase-video">
-                        <video controls playsinline preload="metadata"><source src="pics/merchant-system.mp4" type="video/mp4"></video>
+                    <div class="showcase-media">
+                        <img src="pics/merchant-system.png" alt="Merchant Management System">
                     </div>
                 </div>
 
@@ -212,8 +212,9 @@
                             <span>Wireshark</span><span>Ghidra</span><span>Cheat Engine</span><span>JPEXS</span>
                         </div>
                     </div>
-                    <div class="showcase-media">
-                        <img src="pics/flash-mmo-re.png" alt="Flash MMO Protocol RE">
+                    <div class="showcase-media showcase-media--grid">
+                        <img src="pics/flash-mmo-re.png" alt="JPEXS Flash Decompiler showing game scripts">
+                        <img src="pics/flash-mmo-ghidra.png" alt="Ghidra disassembly of game DLL">
                     </div>
                 </div>
 
@@ -257,8 +258,9 @@
                             <span>TouchDesigner</span><span>MediaPipe</span><span>Point Clouds</span><span>GLSL</span><span>Real-time VFX</span>
                         </div>
                     </div>
-                    <div class="showcase-video">
+                    <div class="showcase-media showcase-media--grid">
                         <video controls playsinline preload="metadata"><source src="pics/touchdesigner-pointcloud.mp4" type="video/mp4"></video>
+                        <video controls playsinline preload="metadata"><source src="pics/touchdesigner-vertical.mov" type="video/mp4"></video>
                     </div>
                 </div>
             </div>
@@ -308,6 +310,12 @@
                     <div class="modal-links" id="modal-links"></div>
                 </div>
             </div>
+        </div>
+
+        <!-- MEDIA LIGHTBOX -->
+        <div id="lightbox" class="lightbox-overlay">
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <div class="lightbox-content" id="lightbox-content"></div>
         </div>
 
         <!-- SKILLS -->
