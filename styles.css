@@ -1252,7 +1252,8 @@ body {
     background: var(--bg-card);
     border: 1px solid var(--border);
     transform: rotateY(180deg);
-    padding: 16px;
+    padding: 12px;
+    overflow: hidden;
 }
 
 .skill-card.flipped .skill-card-front {
@@ -1266,14 +1267,14 @@ body {
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
     justify-content: center;
 }
 
 .skill-tags span {
-    padding: 3px 10px;
+    padding: 2px 7px;
     border-radius: var(--radius-pill);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-secondary);
     border: 1px solid var(--border);
