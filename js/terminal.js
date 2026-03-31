@@ -148,7 +148,7 @@
         const base = parts[0];
 
         // Echo the command
-        addLine(`<span class="terminal-prompt-text">visitor@hamzeh.dev:~$</span> <span class="terminal-cmd-text">${escapeHtml(cmd)}</span>`);
+        addLine(`<span class="terminal-prompt-text">visitor@hamzeh.hack:~$</span> <span class="terminal-cmd-text">${escapeHtml(cmd)}</span>`);
 
         if (!base) return;
 
