@@ -132,7 +132,7 @@
     const projectDetails = [
         { title: 'MCP-Kali-Server', desc: 'AI-powered pentesting framework. Added 12 recon tools, SSH sessions, reverse shells. PR #5 merged.', tech: 'Python, Flask, Docker, Git' },
         { title: 'Burp Suite Automation API', desc: 'REST API extension for Burp Suite. Automates scans and enables AI tool integration.', tech: 'Python, Jython, Burp Suite, Flask' },
-        { title: 'Bug Bounty Hunting', desc: 'Active on HackerOne & Bugcrowd. Triaged findings: mail relay (Medium), hardcoded API creds (High), user enumeration (High).', tech: 'Burp Suite, Recon tools' },
+        { title: 'Bug Bounty Hunting', desc: 'Active on HackerOne & Bugcrowd. Reported findings: mail relay (Medium), hardcoded API creds (High), user enumeration (High).', tech: 'Burp Suite, Recon tools' },
         { title: 'Flash MMO Protocol RE', desc: 'Reverse-engineered SmartFoxServer protocol, decompiled SWF/DLLs, found client-side anti-cheat bypass.', tech: 'Wireshark, Ghidra, Cheat Engine, JPEXS' },
         { title: 'Game Asset RE Toolkit', desc: 'Reverse-engineered VXL/HVA/MIX formats for Red Alert 2 modding. Built Blender exporter addon.', tech: 'Python, Blender API, Hex Editing' },
         { title: 'Full-Stack Merchant System', desc: 'PERN stack CRUD app with search, sort, dark mode. Deployed on Vercel + Railway.', tech: 'React, Node.js, Express, PostgreSQL' },

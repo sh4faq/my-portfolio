@@ -6,6 +6,66 @@
     }
 
     // ==========================================
+    // HERO CLOCK — real-time UTC
+    // ==========================================
+    const clockEl = document.getElementById('hero-clock');
+    if (clockEl) {
+        const updateClock = () => {
+            const now = new Date();
+            const hh = String(now.getUTCHours()).padStart(2, '0');
+            const mm = String(now.getUTCMinutes()).padStart(2, '0');
+            const ss = String(now.getUTCSeconds()).padStart(2, '0');
+            clockEl.textContent = `${hh}:${mm}:${ss}`;
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+    // ==========================================
+    // COPY-TO-CLIPBOARD TOAST (used by contact)
+    // ==========================================
+    window.__showToast = function (msg) {
+        let toast = document.querySelector('.toast');
+        const isNew = !toast;
+        if (isNew) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        // Force reflow on first creation so transition plays from initial state
+        if (isNew) void toast.offsetHeight;
+        // Remove first (in case it was already shown) so re-adding retriggers transition
+        toast.classList.remove('toast--show');
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => toast.classList.add('toast--show'));
+        });
+        clearTimeout(window.__toastTimer);
+        window.__toastTimer = setTimeout(() => toast.classList.remove('toast--show'), 2600);
+    };
+
+    // Copy-to-clipboard for any [data-copy] element
+    document.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const text = btn.dataset.copy;
+            const label = btn.dataset.copyLabel || 'text';
+            if (!text) return;
+            try {
+                await navigator.clipboard.writeText(text);
+                window.__showToast(`✓ Copied ${label}`);
+            } catch (err) {
+                // Fallback: select text
+                const r = document.createRange();
+                r.selectNode(btn);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(r);
+                window.__showToast('Select and press Ctrl+C');
+            }
+        });
+    });
+
+    // ==========================================
     // LOADER — always dismiss, even if GSAP fails
     // ==========================================
     window.addEventListener('load', () => {
@@ -184,8 +244,8 @@
             tag: 'Security',
             title: 'Bug Bounty Hunting',
             meta: '<strong>Platforms:</strong> HackerOne, Bugcrowd<br><strong>Status:</strong> Active (Jan 2024 – Present)',
-            description: 'Active bug bounty hunter with triaged findings across multiple programs. Focus on authentication bypasses, misconfigurations, and API security.',
-            details: '<h4>Triaged Findings</h4><ul><li><strong>Mail Relay Vulnerability (Medium, Triaged Valid):</strong> Unauthenticated mail relay enabling email spoofing with valid DKIM/SPF signatures</li><li><strong>Hardcoded API Credentials (High, Duplicate):</strong> CWE-798 vulnerability exposing production endpoints</li><li><strong>Admin User Enumeration (High, Duplicate):</strong> User enumeration via Cognito ForgotPassword API response differences</li></ul>',
+            description: 'Active bug bounty hunter across multiple programs. Focus on authentication bypasses, misconfigurations, and API security.',
+            details: '<h4>Findings</h4><ul><li><strong>Mail Relay Vulnerability (Medium):</strong> Unauthenticated mail relay enabling email spoofing with valid DKIM/SPF signatures</li><li><strong>Hardcoded API Credentials (High):</strong> CWE-798 vulnerability exposing production endpoints</li><li><strong>Admin User Enumeration (High):</strong> User enumeration via Cognito ForgotPassword API response differences</li></ul>',
             tech: ['Burp Suite', 'Recon', 'API Testing'],
             video: null,
             links: [],

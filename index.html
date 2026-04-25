@@ -6,14 +6,43 @@
     <title>Hamzeh Emreish — Security Researcher & Full-Stack Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Unbounded:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- Custom cursor (desktop only, JS-controlled) -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Atmospheric background layers -->
+    <div class="aurora-wrap" aria-hidden="true">
+        <div class="aurora-blob aurora-blob--1"></div>
+        <div class="aurora-blob aurora-blob--2"></div>
+        <div class="aurora-blob aurora-blob--3"></div>
+    </div>
+
+    <!-- Overlays (above content, below modals) -->
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- Loading Screen — boot sequence -->
     <div id="loader">
-        <div class="loader-logo">&lt;HE/&gt;</div>
+        <pre class="loader-ascii" aria-hidden="true">  ╔════════════════════════════╗
+  ║   HE / OS   v4.7   2026    ║
+  ║   → INITIALIZING SESSION   ║
+  ╚════════════════════════════╝</pre>
+        <div class="loader-log">
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Mounting /dev/terminal</div>
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Loading security modules</div>
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Establishing TCP handshake</div>
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Injecting visual overlays</div>
+            <div class="loader-log-line loader-log-active"><span class="loader-log-progress">[ .... ]</span> Rendering interface<span class="loader-cursor-blink">_</span></div>
+        </div>
         <div class="loader-bar"><div class="loader-bar-fill"></div></div>
     </div>
 
@@ -28,6 +57,7 @@
         <ul class="sidebar-nav">
             <div class="sidebar-indicator"></div>
             <li><a href="#hero" class="sidebar-link active" data-section="hero"><i data-lucide="terminal"></i><span>Terminal</span></a></li>
+            <li><a href="#about" class="sidebar-link" data-section="about"><i data-lucide="user"></i><span>About</span></a></li>
             <li><a href="#projects" class="sidebar-link" data-section="projects"><i data-lucide="code-2"></i><span>Projects</span></a></li>
             <li><a href="#skills" class="sidebar-link" data-section="skills"><i data-lucide="cpu"></i><span>Skills</span></a></li>
             <li><a href="#experience" class="sidebar-link" data-section="experience"><i data-lucide="briefcase"></i><span>Experience</span></a></li>
@@ -44,11 +74,12 @@
 
     <!-- Mobile Bottom Nav -->
     <nav id="mobile-nav">
-        <a href="#hero" class="mobile-nav-link active" data-section="hero"><i data-lucide="terminal"></i></a>
-        <a href="#projects" class="mobile-nav-link" data-section="projects"><i data-lucide="code-2"></i></a>
-        <a href="#skills" class="mobile-nav-link" data-section="skills"><i data-lucide="cpu"></i></a>
-        <a href="#experience" class="mobile-nav-link" data-section="experience"><i data-lucide="briefcase"></i></a>
-        <a href="#contact" class="mobile-nav-link" data-section="contact"><i data-lucide="mail"></i></a>
+        <a href="#hero" class="mobile-nav-link active" data-section="hero" aria-label="Home"><i data-lucide="terminal"></i></a>
+        <a href="#about" class="mobile-nav-link" data-section="about" aria-label="About"><i data-lucide="user"></i></a>
+        <a href="#projects" class="mobile-nav-link" data-section="projects" aria-label="Projects"><i data-lucide="code-2"></i></a>
+        <a href="#skills" class="mobile-nav-link" data-section="skills" aria-label="Skills"><i data-lucide="cpu"></i></a>
+        <a href="#experience" class="mobile-nav-link" data-section="experience" aria-label="Experience"><i data-lucide="briefcase"></i></a>
+        <a href="#contact" class="mobile-nav-link" data-section="contact" aria-label="Contact"><i data-lucide="mail"></i></a>
     </nav>
 
     <!-- Main Content -->
@@ -56,19 +87,34 @@
 
         <!-- HERO / TERMINAL -->
         <section id="hero" class="section hero-section">
-            <div class="hero-text">
-                <h1 class="hero-title">HAMZEH EMREISH</h1>
-                <p class="hero-subtitle">Security Researcher & Full-Stack Developer</p>
+            <div class="hero-status">
+                <span class="hero-status-dot" aria-hidden="true"></span>
+                <span class="hero-status-text">CONNECTION_ESTABLISHED</span>
+                <span class="hero-status-sep">//</span>
+                <span class="hero-status-meta">NYC · <span class="hero-clock" id="hero-clock">--:--:--</span> UTC</span>
             </div>
+
+            <div class="hero-text">
+                <h1 class="hero-title" data-text="HAMZEH EMREISH">HAMZEH EMREISH</h1>
+                <p class="hero-subtitle">
+                    <span class="hero-subtitle-serif">Security Researcher</span>
+                    <span class="hero-subtitle-amp">&amp;</span>
+                    <span class="hero-subtitle-serif">Full-Stack Developer</span>
+                </p>
+                <p class="hero-tagline">
+                    Breaking things on purpose, building things that last. Based in New York, shipping from the terminal.
+                </p>
+            </div>
+
             <div class="terminal-wrapper">
-                <div class="terminal">
+                <div class="terminal terminal-glass">
                     <div class="terminal-header">
                         <div class="terminal-dots">
                             <span class="dot dot-red"></span>
                             <span class="dot dot-yellow"></span>
                             <span class="dot dot-green"></span>
                         </div>
-                        <div class="terminal-title">visitor@hamzeh.hack</div>
+                        <div class="terminal-title">visitor@hamzeh.hack — zsh</div>
                         <div class="terminal-dots-spacer"></div>
                     </div>
                     <div class="terminal-body" id="terminal-output">
@@ -83,9 +129,89 @@
                     </div>
                 </div>
             </div>
+
+            <div class="hero-stats" id="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="3">0</div>
+                    <div class="hero-stat-label">Bug Bounties Triaged</div>
+                </div>
+                <span class="hero-stat-divider" aria-hidden="true"></span>
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="15" data-suffix="+">0</div>
+                    <div class="hero-stat-label">Projects Shipped</div>
+                </div>
+                <span class="hero-stat-divider" aria-hidden="true"></span>
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="3">0</div>
+                    <div class="hero-stat-label">Certifications</div>
+                </div>
+                <span class="hero-stat-divider" aria-hidden="true"></span>
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="4" data-suffix="Y">0</div>
+                    <div class="hero-stat-label">Years Coding</div>
+                </div>
+            </div>
+
             <div class="scroll-indicator">
                 <span>scroll to explore</span>
                 <i data-lucide="chevrons-down"></i>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section about-section">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-photo">
+                        <img src="pics/hamzeh-photo.jpg" alt="Hamzeh Emreish" onerror="this.style.display='none'">
+                        <div class="about-photo-placeholder" aria-hidden="true">
+                            <i data-lucide="user"></i>
+                            <span>PHOTO PENDING</span>
+                            <code>pics/hamzeh-photo.jpg</code>
+                            <span class="about-photo-hint">Drop a .jpg here to populate</span>
+                        </div>
+                        <div class="about-photo-scanline" aria-hidden="true"></div>
+                        <div class="about-photo-badge">
+                            <span class="about-badge-dot"></span>
+                            <span>Available for work</span>
+                        </div>
+                        <div class="about-photo-corner about-photo-corner--tl" aria-hidden="true"></div>
+                        <div class="about-photo-corner about-photo-corner--tr" aria-hidden="true"></div>
+                        <div class="about-photo-corner about-photo-corner--bl" aria-hidden="true"></div>
+                        <div class="about-photo-corner about-photo-corner--br" aria-hidden="true"></div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="section-eyebrow">§ whoami</div>
+                    <h2 class="about-pullquote">
+                        I <em>break things</em> to understand them. I <em>build things</em> I need.
+                    </h2>
+                    <div class="about-body">
+                        <p>Based in New York. English at work, Arabic at home. Writing code since my early teens.</p>
+                        <p>Most of what I ship starts as something I needed. I hated clicking through Burp Suite, so I wrote a REST API for it. I wanted AI to run the recon I was already running by hand, so I contributed twelve tools to MCP Kali Server. A voxel format in Red Alert 2 wasn't documented and the modding community deserved better, so I reverse engineered it and wrote a Blender addon.</p>
+                        <p>Finishing CS at CUNY Lehman, graduating May 2026. I want work that sits between offensive security and real product engineering, without having to pick one.</p>
+                    </div>
+
+                    <div class="about-meta">
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Based in</span>
+                            <span class="about-meta-value">New York, USA</span>
+                        </div>
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Studying</span>
+                            <span class="about-meta-value">CS @ CUNY Lehman</span>
+                        </div>
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Speaks</span>
+                            <span class="about-meta-value">EN · AR</span>
+                        </div>
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Daily Drivers</span>
+                            <span class="about-meta-value">Python · JS · Burp · Ghidra</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -272,7 +398,7 @@
                 <div class="project-card" data-category="security" data-project="2">
                     <div class="project-card-tag">Security</div>
                     <h3 class="project-card-title">Bug Bounty Hunting</h3>
-                    <p class="project-card-desc">Active on HackerOne and Bugcrowd. Found a mail relay spoofing issue (triaged), hardcoded API creds in production, and admin user enumeration through Cognito's ForgotPassword API.</p>
+                    <p class="project-card-desc">Active on HackerOne and Bugcrowd. Reported a mail relay spoofing issue (Medium), hardcoded API credentials in production (High), and admin user enumeration through Cognito's ForgotPassword API (High).</p>
                     <div class="project-card-tech">
                         <span>Burp Suite</span><span>Recon</span><span>API Testing</span>
                     </div>
@@ -507,15 +633,13 @@
                 <div class="timeline-item left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
-                        <div class="timeline-date">May 2025 — Present</div>
-                        <h3 class="timeline-company">Yonkers Car Wash</h3>
-                        <div class="timeline-role">Website & Management System</div>
-                        <div class="timeline-location">Yonkers, NY</div>
+                        <div class="timeline-date">Jan 2024 — Present</div>
+                        <h3 class="timeline-company">Bug Bounty Hunter</h3>
+                        <div class="timeline-role">HackerOne / Bugcrowd</div>
                         <ul class="timeline-list">
-                            <li>Developed full-stack membership and billing website with remote monitoring via RDP/VNC through Tailscale</li>
-                            <li>Managed technical operations, marketing, ICS infrastructure — QR signage, flyers, business cards</li>
-                            <li>Increased membership renewals by 35% through automated email campaigns</li>
-                            <li>Supervised and trained 15-person team, monitored operations remotely</li>
+                            <li>Mail relay vulnerability (Medium) — email spoofing with valid DKIM/SPF</li>
+                            <li>Hardcoded API credentials CWE-798 (High) — production endpoints exposed</li>
+                            <li>Admin user enumeration via Cognito ForgotPassword API (High)</li>
                         </ul>
                     </div>
                 </div>
@@ -540,6 +664,22 @@
                 <div class="timeline-item left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
+                        <div class="timeline-date">May 2025 — Present</div>
+                        <h3 class="timeline-company">Yonkers Car Wash</h3>
+                        <div class="timeline-role">Website & Management System</div>
+                        <div class="timeline-location">Yonkers, NY</div>
+                        <ul class="timeline-list">
+                            <li>Developed full-stack membership and billing website with remote monitoring via RDP/VNC through Tailscale</li>
+                            <li>Managed technical operations, marketing, ICS infrastructure — QR signage, flyers, business cards</li>
+                            <li>Increased membership renewals by 35% through automated email campaigns</li>
+                            <li>Supervised and trained 15-person team, monitored operations remotely</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
                         <div class="timeline-date">Oct 2023 — Feb 2025</div>
                         <h3 class="timeline-company">Central Deli & Convenience</h3>
                         <div class="timeline-role">Co-Owner</div>
@@ -548,21 +688,6 @@
                             <li>Hired and trained team of 7 (5 chefs, 2 cashiers) — established quality and service standards</li>
                             <li>Managed finances: expense tracking, overhead analysis, profit monitoring, budget forecasts in Excel</li>
                             <li>Ensured food safety, inventory management, and quality control</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item right">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-date">Jan 2024 — Present</div>
-                        <h3 class="timeline-company">Bug Bounty Hunter</h3>
-                        <div class="timeline-role">HackerOne / Bugcrowd</div>
-                        <ul class="timeline-list">
-                            <li>Mail relay vulnerability (Medium, triaged valid) — email spoofing with valid DKIM/SPF</li>
-                            <li>Hardcoded API credentials CWE-798 (High, duplicate) — production endpoints exposed</li>
-                            <li>Admin user enumeration via Cognito ForgotPassword API (High, duplicate)</li>
-                            <li>Completed PortSwigger labs: SQL Injection, Auth Bypass, Privilege Escalation</li>
                         </ul>
                     </div>
                 </div>
@@ -633,14 +758,21 @@
             <p class="section-subtitle">Interested in working together? Reach out.</p>
 
             <div class="contact-links">
+                <button class="contact-link contact-link--copy" data-copy="hamzeh.emreish@gmail.com" data-copy-label="email address">
+                    <span class="contact-cmd">$ copy</span><span class="contact-text">hamzeh.emreish@gmail.com</span>
+                    <i data-lucide="copy" class="contact-icon"></i>
+                </button>
                 <a href="https://www.linkedin.com/in/hamzeh-emreish" target="_blank" rel="noopener noreferrer" class="contact-link">
-                    <span class="contact-cmd">$ open</span> linkedin
+                    <span class="contact-cmd">$ open</span><span class="contact-text">linkedin.com/in/hamzeh-emreish</span>
+                    <i data-lucide="external-link" class="contact-icon"></i>
                 </a>
                 <a href="https://github.com/sh4faq" target="_blank" rel="noopener noreferrer" class="contact-link">
-                    <span class="contact-cmd">$ open</span> github
+                    <span class="contact-cmd">$ open</span><span class="contact-text">github.com/sh4faq</span>
+                    <i data-lucide="external-link" class="contact-icon"></i>
                 </a>
                 <a href="Hamzeh_Emreish_Resume.pdf" download class="contact-link">
-                    <span class="contact-cmd">$ download</span> resume.pdf
+                    <span class="contact-cmd">$ download</span><span class="contact-text">resume.pdf</span>
+                    <i data-lucide="download" class="contact-icon"></i>
                 </a>
             </div>
         </section>
@@ -658,7 +790,8 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <!-- App Scripts -->
-    <script src="js/particles.js"></script>
+    <script src="js/foundation.js"></script>
+    <script src="js/globe.js"></script>
     <script src="js/terminal.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/main.js"></script>

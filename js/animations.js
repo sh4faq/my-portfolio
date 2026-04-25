@@ -195,4 +195,71 @@
         start: 'top 85%',
         once: true,
     });
+
+    // ==========================================
+    // HERO STATS — counters animate up from 0
+    // ==========================================
+    gsap.utils.toArray('.hero-stat-value').forEach((el) => {
+        const target = parseInt(el.dataset.count, 10) || 0;
+        const suffix = el.dataset.suffix || '';
+        const counter = { v: 0 };
+        gsap.to(counter, {
+            v: target,
+            duration: 1.8,
+            ease: 'power2.out',
+            delay: 1.6,
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 95%',
+                toggleActions: 'play none none none',
+            },
+            onUpdate: () => {
+                el.textContent = Math.floor(counter.v) + suffix;
+            },
+        });
+    });
+
+    // ==========================================
+    // SECTION TITLE LETTER STAGGER (split + reveal)
+    // ==========================================
+    gsap.utils.toArray('.section-title').forEach((title) => {
+        // Skip if already split
+        if (title.dataset.split) return;
+        const text = title.textContent;
+        title.dataset.split = '1';
+        title.innerHTML = text
+            .split('')
+            .map((ch) => ch === ' '
+                ? '<span class="char char-space">&nbsp;</span>'
+                : `<span class="char">${ch}</span>`
+            )
+            .join('');
+        const chars = title.querySelectorAll('.char');
+        gsap.from(chars, {
+            scrollTrigger: {
+                trigger: title,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+            },
+            yPercent: 110,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.025,
+            ease: 'power3.out',
+        });
+    });
+
+    // ==========================================
+    // HERO ENTRANCE — refined timeline with status, tagline, stats
+    // ==========================================
+    window.animateHero = function () {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.from('.hero-status', { y: -20, opacity: 0, duration: 0.6 })
+          .from('.hero-title', { y: 50, opacity: 0, duration: 1 }, '-=0.2')
+          .from('.hero-subtitle > *', { y: 20, opacity: 0, duration: 0.7, stagger: 0.08 }, '-=0.55')
+          .from('.hero-tagline', { y: 20, opacity: 0, duration: 0.7 }, '-=0.45')
+          .from('.terminal-wrapper', { y: 40, opacity: 0, duration: 0.8 }, '-=0.4')
+          .from('.hero-stats', { y: 30, opacity: 0, duration: 0.7 }, '-=0.5')
+          .from('.scroll-indicator', { opacity: 0, duration: 0.5 }, '-=0.2');
+    };
 })();
