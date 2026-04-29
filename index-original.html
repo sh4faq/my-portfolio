@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamzeh Emreish — Security Researcher & Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Unbounded:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles-original.css">
+</head>
+<body>
+    <!-- Custom cursor (desktop only, JS-controlled) -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Atmospheric background layers -->
+    <div class="aurora-wrap" aria-hidden="true">
+        <div class="aurora-blob aurora-blob--1"></div>
+        <div class="aurora-blob aurora-blob--2"></div>
+        <div class="aurora-blob aurora-blob--3"></div>
+    </div>
+
+    <!-- Overlays (above content, below modals) -->
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- Loading Screen — boot sequence -->
+    <div id="loader">
+        <pre class="loader-ascii" aria-hidden="true">  ╔════════════════════════════╗
+  ║   HE / OS   v4.7   2026    ║
+  ║   → INITIALIZING SESSION   ║
+  ╚════════════════════════════╝</pre>
+        <div class="loader-log">
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Mounting /dev/terminal</div>
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Loading security modules</div>
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Establishing TCP handshake</div>
+            <div class="loader-log-line"><span class="loader-log-ok">[  OK  ]</span> Injecting visual overlays</div>
+            <div class="loader-log-line loader-log-active"><span class="loader-log-progress">[ .... ]</span> Rendering interface<span class="loader-cursor-blink">_</span></div>
+        </div>
+        <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    </div>
+
+    <!-- Three.js Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar">
+        <div class="sidebar-top">
+            <a href="#hero" class="sidebar-logo">&lt;HE/&gt;</a>
+        </div>
+        <ul class="sidebar-nav">
+            <div class="sidebar-indicator"></div>
+            <li><a href="#hero" class="sidebar-link active" data-section="hero"><i data-lucide="terminal"></i><span>Terminal</span></a></li>
+            <li><a href="#about" class="sidebar-link" data-section="about"><i data-lucide="user"></i><span>About</span></a></li>
+            <li><a href="#projects" class="sidebar-link" data-section="projects"><i data-lucide="code-2"></i><span>Projects</span></a></li>
+            <li><a href="#skills" class="sidebar-link" data-section="skills"><i data-lucide="cpu"></i><span>Skills</span></a></li>
+            <li><a href="#experience" class="sidebar-link" data-section="experience"><i data-lucide="briefcase"></i><span>Experience</span></a></li>
+            <li><a href="#education" class="sidebar-link" data-section="education"><i data-lucide="graduation-cap"></i><span>Education</span></a></li>
+            <li><a href="#certifications" class="sidebar-link" data-section="certifications"><i data-lucide="award"></i><span>Certs</span></a></li>
+            <li><a href="#contact" class="sidebar-link" data-section="contact"><i data-lucide="mail"></i><span>Contact</span></a></li>
+        </ul>
+        <div class="sidebar-bottom">
+            <a href="https://www.linkedin.com/in/hamzeh-emreish" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="https://github.com/sh4faq" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <a href="Hamzeh_Emreish_Resume.pdf" download class="sidebar-resume-btn"><i data-lucide="download"></i><span>Resume</span></a>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Nav -->
+    <nav id="mobile-nav">
+        <a href="#hero" class="mobile-nav-link active" data-section="hero" aria-label="Home"><i data-lucide="terminal"></i></a>
+        <a href="#about" class="mobile-nav-link" data-section="about" aria-label="About"><i data-lucide="user"></i></a>
+        <a href="#projects" class="mobile-nav-link" data-section="projects" aria-label="Projects"><i data-lucide="code-2"></i></a>
+        <a href="#skills" class="mobile-nav-link" data-section="skills" aria-label="Skills"><i data-lucide="cpu"></i></a>
+        <a href="#experience" class="mobile-nav-link" data-section="experience" aria-label="Experience"><i data-lucide="briefcase"></i></a>
+        <a href="#contact" class="mobile-nav-link" data-section="contact" aria-label="Contact"><i data-lucide="mail"></i></a>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- HERO / TERMINAL -->
+        <section id="hero" class="section hero-section">
+            <div class="hero-status">
+                <span class="hero-status-dot" aria-hidden="true"></span>
+                <span class="hero-status-text">CONNECTION_ESTABLISHED</span>
+                <span class="hero-status-sep">//</span>
+                <span class="hero-status-meta">NYC · <span class="hero-clock" id="hero-clock">--:--:--</span> UTC</span>
+            </div>
+
+            <div class="hero-text">
+                <h1 class="hero-title" data-text="HAMZEH EMREISH">HAMZEH EMREISH</h1>
+                <p class="hero-subtitle">
+                    <span class="hero-subtitle-serif">Security Researcher</span>
+                    <span class="hero-subtitle-amp">&amp;</span>
+                    <span class="hero-subtitle-serif">Full-Stack Developer</span>
+                </p>
+                <p class="hero-tagline">
+                    Breaking things on purpose, building things that last. Based in New York, shipping from the terminal.
+                </p>
+            </div>
+
+            <div class="terminal-wrapper">
+                <div class="terminal terminal-glass">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="terminal-title">visitor@hamzeh.hack — zsh</div>
+                        <div class="terminal-dots-spacer"></div>
+                    </div>
+                    <div class="terminal-body" id="terminal-output">
+                        <div class="terminal-line">
+                            <span class="terminal-welcome">Welcome to Hamzeh's portfolio. Type <span class="cmd-highlight">help</span> for available commands.</span>
+                        </div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt">visitor@hamzeh.hack:~$&nbsp;</span>
+                        <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false">
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-stats" id="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="3">0</div>
+                    <div class="hero-stat-label">Bug Bounties Triaged</div>
+                </div>
+                <span class="hero-stat-divider" aria-hidden="true"></span>
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="15" data-suffix="+">0</div>
+                    <div class="hero-stat-label">Projects Shipped</div>
+                </div>
+                <span class="hero-stat-divider" aria-hidden="true"></span>
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="3">0</div>
+                    <div class="hero-stat-label">Certifications</div>
+                </div>
+                <span class="hero-stat-divider" aria-hidden="true"></span>
+                <div class="hero-stat">
+                    <div class="hero-stat-value" data-count="4" data-suffix="Y">0</div>
+                    <div class="hero-stat-label">Years Coding</div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>scroll to explore</span>
+                <i data-lucide="chevrons-down"></i>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section about-section">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-photo">
+                        <img src="pics/hamzeh-photo.jpg" alt="Hamzeh Emreish" onerror="this.style.display='none'">
+                        <div class="about-photo-placeholder" aria-hidden="true">
+                            <i data-lucide="user"></i>
+                            <span>PHOTO PENDING</span>
+                            <code>pics/hamzeh-photo.jpg</code>
+                            <span class="about-photo-hint">Drop a .jpg here to populate</span>
+                        </div>
+                        <div class="about-photo-scanline" aria-hidden="true"></div>
+                        <div class="about-photo-badge">
+                            <span class="about-badge-dot"></span>
+                            <span>Available for work</span>
+                        </div>
+                        <div class="about-photo-corner about-photo-corner--tl" aria-hidden="true"></div>
+                        <div class="about-photo-corner about-photo-corner--tr" aria-hidden="true"></div>
+                        <div class="about-photo-corner about-photo-corner--bl" aria-hidden="true"></div>
+                        <div class="about-photo-corner about-photo-corner--br" aria-hidden="true"></div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="section-eyebrow">§ whoami</div>
+                    <h2 class="about-pullquote">
+                        I <em>break things</em> to understand them. I <em>build things</em> I need.
+                    </h2>
+                    <div class="about-body">
+                        <p>Based in New York. English at work, Arabic at home. Writing code since my early teens.</p>
+                        <p>Most of what I ship starts as something I needed. I hated clicking through Burp Suite, so I wrote a REST API for it. I wanted AI to run the recon I was already running by hand, so I contributed twelve tools to MCP Kali Server. A voxel format in Red Alert 2 wasn't documented and the modding community deserved better, so I reverse engineered it and wrote a Blender addon.</p>
+                        <p>Finishing CS at CUNY Lehman, graduating May 2026. I want work that sits between offensive security and real product engineering, without having to pick one.</p>
+                    </div>
+
+                    <div class="about-meta">
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Based in</span>
+                            <span class="about-meta-value">New York, USA</span>
+                        </div>
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Studying</span>
+                            <span class="about-meta-value">CS @ CUNY Lehman</span>
+                        </div>
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Speaks</span>
+                            <span class="about-meta-value">EN · AR</span>
+                        </div>
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Daily Drivers</span>
+                            <span class="about-meta-value">Python · JS · Burp · Ghidra</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Security research, client projects, and open-source contributions</p>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="re">Reverse Engineering</button>
+                <button class="filter-btn" data-filter="webdev">Web Development</button>
+                <button class="filter-btn" data-filter="opensource">Open Source</button>
+                <button class="filter-btn" data-filter="creative">Creative Coding</button>
+            </div>
+
+            <!-- Video Project Showcase -->
+            <div class="project-showcase">
+                <div class="showcase-row" data-category="security opensource">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Open Source</span>
+                        <h3 class="showcase-title">MCP-Kali-Server</h3>
+                        <p class="showcase-desc">Contributed to an open-source AI pentesting tool that lets AI assistants run security scans. My PR added 12 recon tools I actually use (Subfinder, Httpx, Nuclei, Shodan, etc.), plus SSH sessions and reverse shells. Got merged after maintainer review.</p>
+                        <div class="showcase-tech">
+                            <span>Python</span><span>Flask</span><span>Docker</span><span>Git</span>
+                        </div>
+                        <div class="showcase-links">
+                            <a href="https://github.com/TriV3/MCP-Kali-Server/pull/5" target="_blank" rel="noopener noreferrer" class="showcase-link-primary">View PR</a>
+                        </div>
+                    </div>
+                    <div class="showcase-video">
+                        <video autoplay loop muted playsinline><source src="pics/MCP-server.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+
+                <div class="showcase-row showcase-row--reverse" data-category="security">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Security</span>
+                        <h3 class="showcase-title">Burp Suite Automation API</h3>
+                        <p class="showcase-desc">Got tired of clicking around Burp Suite manually, so I built an extension that exposes it as a REST API. Now I can script my scans and let AI tools interact with it directly. Pull proxy history, send requests to repeater, run scans, all via HTTP.</p>
+                        <div class="showcase-tech">
+                            <span>Python</span><span>Jython</span><span>Burp Suite</span><span>Flask</span>
+                        </div>
+                        <div class="showcase-links">
+                            <a href="https://github.com/sh4faq" target="_blank" rel="noopener noreferrer" class="showcase-link-primary">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="showcase-video">
+                        <video autoplay loop muted playsinline><source src="pics/burp-api.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+
+                <div class="showcase-row" data-category="creative webdev">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Creative Coding</span>
+                        <h3 class="showcase-title">Fruit Ninja: Gesture Control</h3>
+                        <p class="showcase-desc">Full Fruit Ninja clone you play with your actual hands through the webcam. MediaPipe tracks your fingers for slicing, and face tracking creates a fish-tank VR parallax effect using off-axis 3D projection. Has multiple game modes, 8 fruit types, powerups, and a chapter/wave system. Over 5,000 lines of vanilla JS.</p>
+                        <div class="showcase-tech">
+                            <span>JavaScript</span><span>Three.js</span><span>MediaPipe</span><span>Canvas2D</span><span>Off-Axis Projection</span><span>Computer Vision</span>
+                        </div>
+                    </div>
+                    <div class="showcase-video">
+                        <video autoplay loop muted playsinline><source src="pics/fruit-ninja.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+
+                <div class="showcase-row showcase-row--reverse" data-category="webdev">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Web Dev</span>
+                        <h3 class="showcase-title">Full-Stack Merchant System</h3>
+                        <p class="showcase-desc">Simple CRUD app to manage merchant data. Has search, sorting, and dark mode. Built it to learn the PERN stack end-to-end. React frontend on Vercel, Express API with PostgreSQL on Railway.</p>
+                        <div class="showcase-tech">
+                            <span>React</span><span>Node.js</span><span>Express</span><span>PostgreSQL</span>
+                        </div>
+                        <div class="showcase-links">
+                            <a href="https://full-stack-pern-app.vercel.app" target="_blank" rel="noopener noreferrer" class="showcase-link-primary">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="showcase-media">
+                        <img src="pics/merchant-system.png" alt="Merchant Management System">
+                    </div>
+                </div>
+
+                <div class="showcase-row showcase-row--reverse" data-category="webdev">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Web Dev</span>
+                        <h3 class="showcase-title">Yonkers Car Wash</h3>
+                        <p class="showcase-desc">Full website and CRM system I built for a car wash business. Has a 4-step VIP signup wizard with live pricing, membership management, and Netlify Forms. I also set up remote monitoring of the car wash systems through Tailscale. Membership renewals went up 35%.</p>
+                        <div class="showcase-tech">
+                            <span>HTML/CSS/JS</span><span>Netlify</span><span>Responsive</span>
+                        </div>
+                        <div class="showcase-links">
+                            <a href="https://yonkerscarwashdetail.com" target="_blank" rel="noopener noreferrer" class="showcase-link-primary">Live Site</a>
+                        </div>
+                    </div>
+                    <div class="showcase-video">
+                        <video autoplay loop muted playsinline><source src="pics/yonkers-wash.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+
+                <div class="showcase-row" data-category="webdev">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Web Dev</span>
+                        <h3 class="showcase-title">Wholesome Habits</h3>
+                        <p class="showcase-desc">Nutrition consulting site I designed with a glassmorphism look, 3D tilt effects on cards, cursor tracking, and smooth scroll animations. Has testimonials, an FAQ section, contact forms, and booking flows for consultations.</p>
+                        <div class="showcase-tech">
+                            <span>React</span><span>JavaScript ES6+</span><span>CSS3</span>
+                        </div>
+                        <div class="showcase-links">
+                            <a href="https://wholesome-habits-demo.com" target="_blank" rel="noopener noreferrer" class="showcase-link-primary">Live Site</a>
+                        </div>
+                    </div>
+                    <div class="showcase-video">
+                        <video autoplay loop muted playsinline><source src="pics/wholesome-habits.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+
+                <div class="showcase-row" data-category="re security">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Reverse Engineering</span>
+                        <h3 class="showcase-title">Flash MMO Protocol RE</h3>
+                        <p class="showcase-desc">Took apart a multiplayer Flash game to understand how it works. Captured the network traffic in Wireshark, figured out the SmartFoxServer protocol, decompiled the SWF in JPEXS, looked at native DLLs in Ghidra, and found an anti-cheat bypass that used MD5 with a hardcoded salt.</p>
+                        <div class="showcase-tech">
+                            <span>Wireshark</span><span>Ghidra</span><span>Cheat Engine</span><span>JPEXS</span>
+                        </div>
+                    </div>
+                    <div class="showcase-media showcase-media--grid">
+                        <img src="pics/flash-mmo-re.png" alt="JPEXS Flash Decompiler showing game scripts">
+                        <img src="pics/flash-mmo-ghidra.png" alt="Ghidra disassembly of game DLL">
+                    </div>
+                </div>
+
+                <div class="showcase-row showcase-row--reverse" data-category="re">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Reverse Engineering</span>
+                        <h3 class="showcase-title">Game Asset RE Toolkit</h3>
+                        <p class="showcase-desc">Wanted to add custom units to Red Alert 2 mods but the file formats weren't documented. So I figured out VXL, HVA, and MIX formats through hex dumps, wrote a Blender addon that exports models to VXL, and put together a modding guide for the community.</p>
+                        <div class="showcase-tech">
+                            <span>Python</span><span>Blender API</span><span>Hex Editing</span>
+                        </div>
+                        <div class="showcase-links">
+                            <a href="https://github.com/sh4faq/MentalOmega-Modding-Guide" target="_blank" rel="noopener noreferrer" class="showcase-link-primary">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="showcase-media">
+                        <img src="pics/game-asset-re.png" alt="Game Asset RE Toolkit">
+                    </div>
+                </div>
+
+                <div class="showcase-row" data-category="security">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Security</span>
+                        <h3 class="showcase-title">CodePath Blue Team</h3>
+                        <p class="showcase-desc">Part of CodePath's cybersecurity program. Set up NGINX with rate-limiting and Amplify monitoring, deployed SNORT and Auditd for intrusion detection, then dug through network logs in Splunk and Wireshark to find IOCs.</p>
+                        <div class="showcase-tech">
+                            <span>NGINX</span><span>SNORT</span><span>Auditd</span><span>Splunk</span><span>Wireshark</span>
+                        </div>
+                    </div>
+                    <div class="showcase-media">
+                        <img src="pics/codepath-cert.png" alt="CodePath Blue Team Certificate">
+                    </div>
+                </div>
+
+                <div class="showcase-row showcase-row--reverse" data-category="creative">
+                    <div class="showcase-text">
+                        <span class="showcase-badge">Creative Coding</span>
+                        <h3 class="showcase-title">Point Cloud Hand Destruction</h3>
+                        <p class="showcase-desc">Made a 3D point cloud in TouchDesigner that you can destroy with your hands. MediaPipe tracks your wrist position and as you move it across the screen, the particles explode outward with noise displacement and a color wave sweeps through. Move your hand back and it reforms.</p>
+                        <div class="showcase-tech">
+                            <span>TouchDesigner</span><span>MediaPipe</span><span>Point Clouds</span><span>GLSL</span><span>Real-time VFX</span>
+                        </div>
+                    </div>
+                    <div class="showcase-media showcase-media--grid">
+                        <video autoplay loop muted playsinline><source src="pics/touchdesigner-pointcloud.mp4" type="video/mp4"></video>
+                        <video autoplay loop muted playsinline><source src="pics/touchdesigner-vertical.mov" type="video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Projects -->
+            <h3 class="projects-more-title">More Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card" data-category="security" data-project="2">
+                    <div class="project-card-tag">Security</div>
+                    <h3 class="project-card-title">Bug Bounty Hunting</h3>
+                    <p class="project-card-desc">Active on HackerOne and Bugcrowd. Reported a mail relay spoofing issue (Medium), hardcoded API credentials in production (High), and admin user enumeration through Cognito's ForgotPassword API (High).</p>
+                    <div class="project-card-tech">
+                        <span>Burp Suite</span><span>Recon</span><span>API Testing</span>
+                    </div>
+                    <div class="project-card-footer">
+                        <span class="project-status active">Active</span>
+                        <button class="project-view-btn">View Details</button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="security" data-project="8">
+                    <div class="project-card-tag">Security</div>
+                    <h3 class="project-card-title">HackTheBox Labs</h3>
+                    <p class="project-card-desc">Working through HTB labs focused on box exploitation, privesc, web app vulns, and network pivoting. Mostly Linux boxes but some Windows too.</p>
+                    <div class="project-card-tech">
+                        <span>Pentesting</span><span>CTF</span><span>Linux</span>
+                    </div>
+                    <div class="project-card-footer">
+                        <button class="project-view-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT MODAL -->
+        <div id="project-modal" class="modal-overlay">
+            <div class="modal">
+                <button class="modal-close" aria-label="Close modal"><i data-lucide="x"></i></button>
+                <div class="modal-content">
+                    <div class="modal-tag" id="modal-tag"></div>
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <div class="modal-meta" id="modal-meta"></div>
+                    <div class="modal-description" id="modal-description"></div>
+                    <div class="modal-details" id="modal-details"></div>
+                    <div class="modal-tech" id="modal-tech"></div>
+                    <div class="modal-video" id="modal-video"></div>
+                    <div class="modal-links" id="modal-links"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEDIA LIGHTBOX -->
+        <div id="lightbox" class="lightbox-overlay">
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <div class="lightbox-content" id="lightbox-content"></div>
+        </div>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-subtitle">Technical & professional expertise</p>
+
+            <div class="skills-grid">
+                <div class="skill-card" data-color="red">
+                    <div class="skill-card-front">
+                        <i data-lucide="shield-alert"></i>
+                        <h3>Ethical Hacking</h3>
+                        <span class="skill-count">6 tools</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Burp Suite</span><span>Metasploit</span><span>SQLMap</span><span>Hydra</span><span>John the Ripper</span><span>Nikto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="red">
+                    <div class="skill-card-front">
+                        <i data-lucide="search"></i>
+                        <h3>Recon & Enumeration</h3>
+                        <span class="skill-count">16 tools</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>FFUF</span><span>gobuster</span><span>dirb</span><span>subfinder</span><span>httpx</span><span>nuclei</span><span>arjun</span><span>assetfinder</span><span>subzy</span><span>waybackurls</span><span>shodan</span><span>fierce</span><span>byp4xx</span><span>searchsploit</span><span>wpscan</span><span>enum4linux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="blue">
+                    <div class="skill-card-front">
+                        <i data-lucide="shield-check"></i>
+                        <h3>IDS/IPS & Security</h3>
+                        <span class="skill-count">5 tools</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Splunk</span><span>SNORT</span><span>Auditd</span><span>NGINX/Amplify</span><span>Windows Event Viewer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="blue">
+                    <div class="skill-card-front">
+                        <i data-lucide="network"></i>
+                        <h3>Network Tools</h3>
+                        <span class="skill-count">5 tools</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Wireshark</span><span>tcpdump</span><span>Windows RDP</span><span>SSH</span><span>Nmap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="green">
+                    <div class="skill-card-front">
+                        <i data-lucide="code"></i>
+                        <h3>Programming</h3>
+                        <span class="skill-count">6 skills</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Python</span><span>JavaScript</span><span>Bash</span><span>Java</span><span>REST APIs</span><span>Security Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="orange">
+                    <div class="skill-card-front">
+                        <i data-lucide="globe"></i>
+                        <h3>Full-Stack Web Dev</h3>
+                        <span class="skill-count">9 skills</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>React</span><span>Node.js</span><span>Express.js</span><span>PostgreSQL</span><span>HTML/CSS</span><span>Vite</span><span>Vercel</span><span>Railway</span><span>Deployment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="purple">
+                    <div class="skill-card-front">
+                        <i data-lucide="microscope"></i>
+                        <h3>Reverse Engineering</h3>
+                        <span class="skill-count">7 tools</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Ghidra</span><span>Cheat Engine</span><span>Binary/Hex Analysis</span><span>Protocol Analysis</span><span>Struct Parsing</span><span>Blender Python</span><span>JPEXS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="green">
+                    <div class="skill-card-front">
+                        <i data-lucide="plug"></i>
+                        <h3>MCP & API Dev</h3>
+                        <span class="skill-count">8 skills</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Flask REST API</span><span>FastMCP</span><span>Model Context Protocol</span><span>API Integration</span><span>JSON/HTTP</span><span>SSE</span><span>AI Integration</span><span>Git/GitHub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="purple">
+                    <div class="skill-card-front">
+                        <i data-lucide="container"></i>
+                        <h3>Virtualization</h3>
+                        <span class="skill-count">6 tools</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Proxmox</span><span>Docker</span><span>VMware</span><span>VirtualBox</span><span>Hyper-V</span><span>VPS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="blue">
+                    <div class="skill-card-front">
+                        <i data-lucide="book-open"></i>
+                        <h3>Security Concepts</h3>
+                        <span class="skill-count">7 topics</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Active Directory</span><span>TCP/IP</span><span>DNS</span><span>IP Addressing</span><span>Group Policy</span><span>CVE/CVSS</span><span>NIST/ISO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="purple">
+                    <div class="skill-card-front">
+                        <i data-lucide="settings"></i>
+                        <h3>ICS & Embedded</h3>
+                        <span class="skill-count">4 skills</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Carwash Systems</span><span>PLC Diagnostics</span><span>Sensor Timing</span><span>Remote Monitoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="orange">
+                    <div class="skill-card-front">
+                        <i data-lucide="monitor"></i>
+                        <h3>IT Infrastructure</h3>
+                        <span class="skill-count">4 skills</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>ICS</span><span>RDP/VNC/Tailscale</span><span>System Maintenance</span><span>Troubleshooting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-color="orange">
+                    <div class="skill-card-front">
+                        <i data-lucide="users"></i>
+                        <h3>Leadership</h3>
+                        <span class="skill-count">6 skills</span>
+                    </div>
+                    <div class="skill-card-back">
+                        <div class="skill-tags">
+                            <span>Team Mgmt (15+)</span><span>Performance Reviews</span><span>Training</span><span>Operations</span><span>Budget Planning</span><span>Financial Mgmt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Professional journey</p>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Jan 2024 — Present</div>
+                        <h3 class="timeline-company">Bug Bounty Hunter</h3>
+                        <div class="timeline-role">HackerOne / Bugcrowd</div>
+                        <ul class="timeline-list">
+                            <li>Mail relay vulnerability (Medium) — email spoofing with valid DKIM/SPF</li>
+                            <li>Hardcoded API credentials CWE-798 (High) — production endpoints exposed</li>
+                            <li>Admin user enumeration via Cognito ForgotPassword API (High)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Nov 2023 — Present</div>
+                        <h3 class="timeline-company">Equinox</h3>
+                        <div class="timeline-role">Manager on Duty (MOD)</div>
+                        <div class="timeline-location">Scarsdale, NY</div>
+                        <ul class="timeline-list">
+                            <li>Promoted from Front Desk Associate; previously at Mamaroneck location</li>
+                            <li>Oversee daily club operations, member safety, staff coordination across all departments</li>
+                            <li>Trained and onboarded 10+ new team members on systems and protocols</li>
+                            <li>Cross-trained in Pro Shop — inventory management, POS, product knowledge</li>
+                            <li>CPR/AED certified; worked at Hudson Yards and Printing House flagships</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">May 2025 — Present</div>
+                        <h3 class="timeline-company">Yonkers Car Wash</h3>
+                        <div class="timeline-role">Website & Management System</div>
+                        <div class="timeline-location">Yonkers, NY</div>
+                        <ul class="timeline-list">
+                            <li>Developed full-stack membership and billing website with remote monitoring via RDP/VNC through Tailscale</li>
+                            <li>Managed technical operations, marketing, ICS infrastructure — QR signage, flyers, business cards</li>
+                            <li>Increased membership renewals by 35% through automated email campaigns</li>
+                            <li>Supervised and trained 15-person team, monitored operations remotely</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Oct 2023 — Feb 2025</div>
+                        <h3 class="timeline-company">Central Deli & Convenience</h3>
+                        <div class="timeline-role">Co-Owner</div>
+                        <div class="timeline-location">Mamaroneck, NY</div>
+                        <ul class="timeline-list">
+                            <li>Hired and trained team of 7 (5 chefs, 2 cashiers) — established quality and service standards</li>
+                            <li>Managed finances: expense tracking, overhead analysis, profit monitoring, budget forecasts in Excel</li>
+                            <li>Ensured food safety, inventory management, and quality control</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTIFICATIONS -->
+        <section id="education" class="section">
+            <h2 class="section-title">Education</h2>
+
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-icon"><i data-lucide="building-2"></i></div>
+                    <h3>CUNY Lehman College</h3>
+                    <p class="edu-degree">B.S. in Computer Science</p>
+                    <p class="edu-meta">Full Time &bull; GPA: 3.4 &bull; Expected May 2026</p>
+                    <p class="edu-courses"><strong>Coursework:</strong> Data Structures, Full Stack Web Dev, AI, Machine Learning, Robotics, Discrete Math, Vector Calculus, Probability</p>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-icon"><i data-lucide="building-2"></i></div>
+                    <h3>SUNY Westchester Community College</h3>
+                    <p class="edu-degree">Computer Programming</p>
+                    <p class="edu-meta">2 Years Attended</p>
+                    <p class="edu-courses"><strong>Coursework:</strong> Computer Programming 1, Computer Programming 2</p>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-icon"><i data-lucide="shield"></i></div>
+                    <h3>Self-Directed Cybersecurity</h3>
+                    <p class="edu-degree">Independent Learning</p>
+                    <p class="edu-meta">2022 — Present</p>
+                    <p class="edu-courses">Continuous learning through CTF challenges, HackTheBox labs, bug bounty programs, PortSwigger Academy, and security research</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2 class="section-title">Certifications</h2>
+
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-badge"><i data-lucide="shield-check"></i></div>
+                    <h3>CompTIA Security+</h3>
+                    <p class="cert-id">SY0-701</p>
+                    <p class="cert-date">July 29, 2024</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge"><i data-lucide="shield-check"></i></div>
+                    <h3>Google Cybersecurity</h3>
+                    <p class="cert-id">Professional Certificate</p>
+                    <p class="cert-date">August 5, 2024</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-badge"><i data-lucide="shield-check"></i></div>
+                    <h3>CodePath Cybersecurity</h3>
+                    <p class="cert-id">Intermediate Cyber & Python</p>
+                    <p class="cert-date">October 15, 2024</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Interested in working together? Reach out.</p>
+
+            <div class="contact-links">
+                <button class="contact-link contact-link--copy" data-copy="hamzeh.emreish@gmail.com" data-copy-label="email address">
+                    <span class="contact-cmd">$ copy</span><span class="contact-text">hamzeh.emreish@gmail.com</span>
+                    <i data-lucide="copy" class="contact-icon"></i>
+                </button>
+                <a href="https://www.linkedin.com/in/hamzeh-emreish" target="_blank" rel="noopener noreferrer" class="contact-link">
+                    <span class="contact-cmd">$ open</span><span class="contact-text">linkedin.com/in/hamzeh-emreish</span>
+                    <i data-lucide="external-link" class="contact-icon"></i>
+                </a>
+                <a href="https://github.com/sh4faq" target="_blank" rel="noopener noreferrer" class="contact-link">
+                    <span class="contact-cmd">$ open</span><span class="contact-text">github.com/sh4faq</span>
+                    <i data-lucide="external-link" class="contact-icon"></i>
+                </a>
+                <a href="Hamzeh_Emreish_Resume.pdf" download class="contact-link">
+                    <span class="contact-cmd">$ download</span><span class="contact-text">resume.pdf</span>
+                    <i data-lucide="download" class="contact-icon"></i>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built with vanilla JS, GSAP & Three.js</p>
+            <p>&copy; 2025 Hamzeh Emreish</p>
+        </footer>
+    </main>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- App Scripts -->
+    <script src="js/foundation.js"></script>
+    <script src="js/globe.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    (function() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64;
+        canvas.height = 64;
+        const ctx = canvas.getContext('2d');
+        let frame = 0;
+
+        function drawFavicon() {
+            ctx.clearRect(0, 0, 64, 64);
+
+            // Glowing background pulse
+            const pulse = Math.sin(frame * 0.03) * 0.3 + 0.7;
+            ctx.fillStyle = `rgba(10, 15, 28, ${pulse})`;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, 64, 64, 10);
+            ctx.fill();
+
+            // Rotating glow ring
+            const angle = frame * 0.02;
+            const gx = 32 + Math.cos(angle) * 8;
+            const gy = 32 + Math.sin(angle) * 8;
+            const grad = ctx.createRadialGradient(gx, gy, 0, 32, 32, 36);
+            grad.addColorStop(0, 'rgba(59, 130, 246, 0.25)');
+            grad.addColorStop(0.5, 'rgba(6, 182, 212, 0.08)');
+            grad.addColorStop(1, 'rgba(139, 92, 246, 0)');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, 64, 64, 10);
+            ctx.fill();
+
+            // Scanline effect
+            const scanY = (frame * 0.7) % 64;
+            ctx.fillStyle = 'rgba(6, 182, 212, 0.12)';
+            ctx.fillRect(0, scanY, 64, 3);
+
+            // Text with glow
+            const glowIntensity = Math.sin(frame * 0.025) * 2 + 4;
+            ctx.shadowColor = '#3b82f6';
+            ctx.shadowBlur = glowIntensity;
+            ctx.font = 'bold 30px "Orbitron", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#e2e8f0';
+            ctx.fillText('HE', 32, 34);
+            ctx.shadowBlur = 0;
+
+            // Update favicon
+            const link = document.querySelector("link[rel='icon']");
+            link.href = canvas.toDataURL('image/png');
+
+            frame++;
+            requestAnimationFrame(drawFavicon);
+        }
+        drawFavicon();
+    })();
+    </script>
+</body>
+</html>
