@@ -607,8 +607,8 @@ video {
 }
 
 /* Work-section entries are 2-column grids: text + framed media.
-   Findings/experience entries (without .entry-media) stay full-width. */
-.entries--work .entry-link {
+   Each is a separate clickable target. */
+.entries--work .entry {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 300px;
   gap: 2rem;
@@ -616,28 +616,34 @@ video {
 }
 
 @media (max-width: 720px) {
-  .entries--work .entry-link {
+  .entries--work .entry {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
 }
 
-.entry-link {
+/* The text portion — links go to external URL, static entries are inert. */
+.entry-text {
+  position: relative;
+}
+
+.entry-text-link {
+  display: block;
   color: inherit;
   text-decoration: none;
-  padding: 0.75rem 0.85rem;
-  margin: -0.75rem -0.85rem;
-  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  margin: -0.4rem -0.65rem;
+  border-radius: 6px;
   position: relative;
   transition: background-color 0.25s ease;
 }
 
-.entry-link::before {
+.entry-text-link::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.8rem;
-  bottom: 0.8rem;
+  top: 0.55rem;
+  bottom: 0.55rem;
   width: 2px;
   background: var(--accent);
   border-radius: 2px;
@@ -646,31 +652,43 @@ video {
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.entry-link:hover {
+.entry-text-link:hover {
   background-color: rgba(255, 255, 255, 0.025);
 }
 
-.entry-link:hover::before {
+.entry-text-link:hover::before {
   opacity: 1;
   transform: scaleY(1);
 }
 
-.entry-link--static {
-  cursor: default;
+.entry-text-link:hover .entry-title {
+  color: var(--accent-2);
 }
 
-.entry-link--static:hover {
-  background-color: transparent;
+.entry-text-link:hover .entry-meta {
+  color: var(--accent);
 }
 
-.entry-link--static:hover::before {
-  opacity: 0;
-}
-
-/* ───── Framed media (project preview videos & images) */
+/* ───── Framed media (project preview videos & images)
+       Now a <button> that opens a lightbox on click. */
 .entry-media {
   position: relative;
   margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: zoom-in;
+  width: 100%;
+  display: block;
+  font-family: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.entry-media:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
 }
 
 .media-frame {
@@ -685,16 +703,16 @@ video {
     0 1px 0 0 var(--hairline) inset,
     0 20px 40px -15px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(0, 0, 0, 0.3);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.entry-link:hover .media-frame {
-  border-color: rgba(200, 169, 106, 0.32);
+.entry-media:hover .media-frame {
+  border-color: rgba(200, 169, 106, 0.4);
   box-shadow:
     0 1px 0 0 var(--hairline) inset,
     0 20px 40px -10px rgba(0, 0, 0, 0.7),
     0 0 0 1px rgba(0, 0, 0, 0.3),
-    0 0 32px var(--accent-soft);
+    0 0 40px var(--accent-soft);
 }
 
 .media-frame video,
@@ -707,8 +725,8 @@ video {
   transition: filter 0.6s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.entry-link:hover .media-frame video,
-.entry-link:hover .media-frame img {
+.entry-media:hover .media-frame video,
+.entry-media:hover .media-frame img {
   filter: grayscale(0.05) contrast(1.08) brightness(1);
   transform: scale(1.03);
 }
@@ -731,6 +749,175 @@ video {
     transparent 55%,
     rgba(0, 0, 0, 0.4)
   );
+}
+
+/* Expand badge — visual cue that the media opens a lightbox */
+.media-expand-badge {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.55rem 0.32rem 0.5rem;
+  background: rgba(10, 9, 8, 0.75);
+  border: 1px solid var(--hairline-2);
+  border-radius: 4px;
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(8px);
+  opacity: 0.85;
+  transition: opacity 0.25s ease,
+              background-color 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease;
+  pointer-events: none;
+}
+
+.entry-media:hover .media-expand-badge {
+  opacity: 1;
+  background: rgba(10, 9, 8, 0.92);
+  color: var(--accent);
+  border-color: rgba(200, 169, 106, 0.4);
+}
+
+.media-expand-badge svg {
+  display: block;
+}
+
+.media-expand-badge .expand-text {
+  letter-spacing: 0.1em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Lightbox — fullscreen media preview, opens on .entry-media click
+   ═══════════════════════════════════════════════════════════ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 9, 8, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox-stage {
+  position: relative;
+  z-index: 1;
+  max-width: min(92vw, 1400px);
+  max-height: 84vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--hairline-3);
+  background: var(--bg-elev);
+  box-shadow:
+    0 40px 100px -20px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(200, 169, 106, 0.1);
+  transform: scale(0.96);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox.is-open .lightbox-stage {
+  transform: scale(1);
+}
+
+.lightbox-stage video,
+.lightbox-stage img {
+  max-width: min(92vw, 1400px);
+  max-height: 84vh;
+  display: block;
+  object-fit: contain;
+  background: #0a0908;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  max-width: 80vw;
+  padding: 0.5rem 1rem;
+  background: rgba(10, 9, 8, 0.6);
+  border-radius: 4px;
+  border: 1px solid var(--hairline-2);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s ease 0.2s;
+}
+
+.lightbox.is-open .lightbox-caption {
+  opacity: 1;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hairline-2);
+  color: var(--ink-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-close:hover {
+  background: rgba(200, 169, 106, 0.12);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+  }
+  .lightbox-caption {
+    bottom: 1rem;
+    font-size: 10.5px;
+  }
 }
 
 .entry-meta {
