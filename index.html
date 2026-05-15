@@ -153,7 +153,7 @@
                         <div class="meta-row"><dt>Studying</dt><dd>CS · CUNY Lehman</dd></div>
                         <div class="meta-row"><dt>Speaks</dt><dd>EN · AR</dd></div>
                         <div class="meta-row"><dt>Daily drivers</dt><dd>Python · JS · Burp · Ghidra</dd></div>
-                        <div class="meta-row"><dt>Status</dt><dd><span class="status-dot"></span>Available for work</dd></div>
+                        <div class="meta-row"><dt>Status</dt><dd><span class="status-dot"></span>Open to new-grad SWE / security roles</dd></div>
                     </dl>
                 </aside>
             </div>
@@ -185,7 +185,7 @@
                     <div class="feature-text">
                         <div class="feature-tag">Open Source</div>
                         <h3 class="feature-title">MCP-Kali-Server</h3>
-                        <p class="feature-dek">Contributed twelve recon tools, SSH session management, and reverse shell support to an open-source AI pentesting framework. Merged after maintainer review.</p>
+                        <p class="feature-dek">Contributed twelve recon tools, SSH session management, and reverse shell support to an open-source AI pentesting framework. Merged by the maintainer after review — now part of the upstream project.</p>
                         <ul class="feature-tech">
                             <li>Python</li><li>Flask</li><li>Docker</li><li>Git</li>
                         </ul>
@@ -202,7 +202,7 @@
                     <div class="feature-text">
                         <div class="feature-tag">Security</div>
                         <h3 class="feature-title">Burp Suite Automation API</h3>
-                        <p class="feature-dek">A REST API extension that exposes Burp's proxy, scanner, and repeater over HTTP, so scans can be scripted and AI tools can drive the testing loop directly.</p>
+                        <p class="feature-dek">A REST API extension that exposes Burp's proxy, scanner, and repeater over HTTP — letting AI agents drive Burp the same way a human would.</p>
                         <ul class="feature-tech">
                             <li>Python</li><li>Jython</li><li>Burp Suite</li><li>Flask</li>
                         </ul>
@@ -353,8 +353,8 @@
                 <article class="more-card" data-category="security">
                     <div class="more-tag">Security</div>
                     <h4>Bug Bounty Hunting</h4>
-                    <p>Active on HackerOne and Bugcrowd. Reported a mail relay spoofing issue (Medium), hardcoded API credentials (High), and admin user enumeration via Cognito's ForgotPassword API (High).</p>
-                    <div class="more-tech"><span>Burp Suite</span><span>Recon</span><span>API Testing</span></div>
+                    <p>Active on HackerOne, Bugcrowd, and Intigriti. Findings span patch-bypass research, OAuth token exposure, SSRF chaining, hardcoded credential discovery, and authentication enumeration across enterprise observability, consumer fitness, DNS / internet infrastructure, enterprise LMS, and cloud-infrastructure platforms. Notable work includes a Critical (CVSS 9.1) parser allowlist bypass enabling LFI, OAuth token exposure with confirmed account modification and 200M+ user enumeration, and a High (CVSS 8.6) SSRF reaching cloud metadata via 302-redirect bypass. Program names are not listed because most engagements are under non-disclosure; available on request. Earlier valid finding on unauthenticated mail relay with DKIM/SPF-aligned spoofing.</p>
+                    <div class="more-tech"><span>Burp Suite</span><span>Recon</span><span>API Testing</span><span>Patch-Bypass Research</span></div>
                 </article>
                 <article class="more-card" data-category="security">
                     <div class="more-tag">Security</div>
@@ -422,7 +422,7 @@
                 </div>
                 <div class="credit-row">
                     <div class="credit-cat">Leadership</div>
-                    <div class="credit-list">Team Management (15+) · Performance Reviews · Training · Operations · Budget Planning</div>
+                    <div class="credit-list">Team Management (15+) · Cross-Departmental Coordination · Member Experience · Service Recovery · Onboarding Programs · Performance Reviews · Operations · Budget Planning</div>
                 </div>
             </div>
         </section>
@@ -441,11 +441,15 @@
                 <li class="cv-item">
                     <div class="cv-date">Jan 2024 — Present</div>
                     <div class="cv-body">
-                        <h3 class="cv-company">Bug Bounty Hunter <span class="cv-role">— HackerOne / Bugcrowd</span></h3>
+                        <h3 class="cv-company">Bug Bounty Hunter <span class="cv-role">— HackerOne / Bugcrowd / Intigriti</span></h3>
                         <ul>
-                            <li>Mail relay vulnerability (Medium): email spoofing with valid DKIM/SPF.</li>
-                            <li>Hardcoded API credentials, CWE-798 (High): production endpoints exposed.</li>
-                            <li>Admin user enumeration via Cognito ForgotPassword API (High).</li>
+                            <li>Enterprise observability platform (Intigriti, Critical, CVSS 9.1, duplicated): Parser allowlist bypass in the platform's SQL expression engine. The fix for CVE-2026-27876 only guarded one of five AST fields skipped by vitess walkSubtree (Into); load_file() inside an ORDER BY clause reaches arbitrary files on disk. Same primitive class as CVE-2024-9264.</li>
+                            <li>Enterprise LMS platform (HackerOne, High, submitted): Email injection in a Frappe-based contact form endpoint. The sender parameter is used as the email recipient rather than the sender address, allowing attacker-controlled outbound mail from the platform's legitimate domain to arbitrary recipients with full SPF/DKIM/DMARC alignment and no rate limit. Working PoC demonstrated end-to-end with a chained phishing payload routing victims through an OAuth-flow redirect.</li>
+                            <li>Major cloud provider (Intigriti, High, CVSS 8.6, submitted May 14 2026, awaiting triage): SSRF in the provider's GenAI Knowledge Base web crawler. Initial fetch validates the hostname against a deny-list and resolves to reject private IPs, but the crawler follows HTTP 302 redirects without re-validating the destination. A redirect trampoline reaches 169.254.169.254 cloud metadata and internal services.</li>
+                            <li>Enterprise LMS platform (HackerOne, High, CVSS 7.5, duplicated): Admin user enumeration via Cognito ForgotPassword API. Unauthenticated GraphQL query leaks the admin client_id; using it, Cognito's ForgotPassword endpoint returns distinct responses for valid versus invalid usernames (CodeDeliveryDetails vs UserNotFoundException), enabling admin email enumeration with a first-letter leak in the destination field. Patched shortly after testing.</li>
+                            <li>Major consumer fitness platform (Bugcrowd, Informational by program triage): OAuth access tokens embedded in window.__STATE__ on the public OAuth authorize page enable authentication bypass without completing the OAuth flow. Confirmed write access against the API (PUT to a user resource returned HTTP 200 with first_name modified) and read access to mass user enumeration across user IDs 1 through 231M+ via email, name, and query searches without rate limiting. Program ruled the modified account was a test user (P5/Informational); underlying primitive remains an unauthenticated account-modification + bulk-PII channel.</li>
+                            <li>Major DNS / internet infrastructure provider (Bugcrowd, triaged as duplicate): Production API credentials (CWE-798, CWE-522) hardcoded in a publicly-accessible JavaScript config on the provider's domain-suggestion product, granting unauthenticated access to all seven backend API endpoints. Original duplicate filed earlier in 2025 with restricted key scope.</li>
+                            <li>Mail relay vulnerability (Medium, triaged valid): email spoofing with valid DKIM/SPF.</li>
                         </ul>
                     </div>
                 </li>
@@ -454,10 +458,15 @@
                     <div class="cv-body">
                         <h3 class="cv-company">Equinox <span class="cv-role">— Manager on Duty, Scarsdale, NY</span></h3>
                         <ul>
-                            <li>Promoted from Front Desk Associate; previously at Mamaroneck.</li>
-                            <li>Oversee daily operations, member safety, and staff coordination across departments.</li>
-                            <li>Trained and onboarded 10+ new team members. Cross-trained in Pro Shop.</li>
-                            <li>CPR/AED certified; worked at Hudson Yards and Printing House flagships.</li>
+                            <li>Promoted from Front Desk Associate at Mamaroneck to Manager on Duty at Scarsdale; rotated through flagship clubs at Hudson Yards and Printing House.</li>
+                            <li>Contribute to strategy meetings with the General Manager, Regional Training Manager, and Facility Manager. Bring floor-level observations on member retention, personal training conversion, facility quality, and staff performance.</li>
+                            <li>Rebuilt the front desk schedule and shift structure. Closed a $1,500 labor budget overrun and brought it to zero within three months.</li>
+                            <li>Run point on in-house tech for the club: BitLocker recovery, Windows blue screens, POS system setup and reconfiguration, audio system faults, member-facing hardware. Diagnose the issue first; only escalate to the vendor when a part has genuinely failed or needs replacement.</li>
+                            <li>Walk the entire club daily. Catch cleanliness inconsistencies and bring them to management for follow-through.</li>
+                            <li>Inspect equipment on every walkthrough. When a piece of cardio or strength gear is failing or unsafe, tag it Out of Service, power it down at the source for treadmills, and report it up the same shift.</li>
+                            <li>Caught a member who had been accessing the club on someone else's account for nearly a month. The photo on file almost matched, but on closer inspection the match was off. Raised it to the GM, who verified and took action.</li>
+                            <li>Coach the front desk team on the engagement standards a luxury club requires. Phones off the desk. iPad and laptop ready for check-in and security verification. Greet every member like a guest; the desk is the first department a member sees, and without that level of attention the experience drops to the same as any other gym.</li>
+                            <li>Trained and onboarded more than ten new front desk team members. Cross-trained in the Pro Shop. CPR and AED certified.</li>
                         </ul>
                     </div>
                 </li>
