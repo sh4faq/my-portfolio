@@ -1,624 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamzeh Emreish — Security Researcher & Full-Stack Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamzeh Emreish — Security researcher & full-stack developer</title>
+  <meta name="description" content="Security researcher and full-stack developer in New York. Bug bounty hunter on HackerOne, Bugcrowd, and Intigriti. CS senior at CUNY Lehman.">
+
+  <meta property="og:title" content="Hamzeh Emreish — Security researcher & full-stack developer">
+  <meta property="og:description" content="Security research and full-stack systems. Based in New York.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- MASTHEAD — top magazine bar -->
-    <header class="masthead">
-        <div class="masthead-inner">
-            <div class="masthead-left">
-                <span class="masthead-issue">VOL. IV · ISSUE 26</span>
-            </div>
-            <div class="masthead-center">
-                <a href="#hero" class="masthead-logo">Hamzeh<span class="masthead-logo-mark">·</span>Emreish</a>
-            </div>
-            <div class="masthead-right">
-                <span class="masthead-meta">NYC · <span id="masthead-clock">--:--</span></span>
-            </div>
+  <main class="main">
+
+    <!-- HERO ----------------------------------------------- -->
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-mark">~</span>
+            <span class="eyebrow-text">Hamzeh Emreish</span>
+            <span class="eyebrow-dot"></span>
+            <span class="eyebrow-text">New York</span>
+            <span class="eyebrow-dot"></span>
+            <span class="eyebrow-text">v4.0</span>
+          </div>
+
+          <h1 class="hero-title">
+            Security <em>researcher</em><br>
+            &amp; full-stack <em>builder</em>.
+          </h1>
+
+          <p class="hero-pitch">
+            I take software apart and put it back together. Bug bounty research on HackerOne, Bugcrowd, and Intigriti, plus full-stack systems for real businesses. CS senior at CUNY Lehman, graduating May 2026.
+          </p>
+
+          <div class="hero-terminal" aria-label="Terminal-style profile note">
+            <p class="prompt-line"><span class="prompt-arrow">❯</span> <span class="prompt-cmd">whoami</span></p>
+            <p class="prompt-out">a builder who reads patch diffs for fun.</p>
+            <p class="prompt-line"><span class="prompt-arrow">❯</span> <span class="prompt-cmd">cat now.txt</span></p>
+            <p class="prompt-out">shipping bug bounty research on the GenAI attack surface. drafting an email-injection chain on Frappe. graduating CUNY Lehman in May.</p>
+          </div>
         </div>
-        <div class="masthead-rule"></div>
-    </header>
 
-    <!-- MARGIN INDEX (desktop) — sticky table of contents -->
-    <aside class="margin-index" aria-label="Sections">
-        <ol class="margin-index-list">
-            <li><a href="#hero" class="mi-link active" data-section="hero"><span class="mi-num">i</span><span class="mi-label">Cover</span></a></li>
-            <li><a href="#about" class="mi-link" data-section="about"><span class="mi-num">ii</span><span class="mi-label">Whoami</span></a></li>
-            <li><a href="#projects" class="mi-link" data-section="projects"><span class="mi-num">iii</span><span class="mi-label">Work</span></a></li>
-            <li><a href="#skills" class="mi-link" data-section="skills"><span class="mi-num">iv</span><span class="mi-label">Tools</span></a></li>
-            <li><a href="#experience" class="mi-link" data-section="experience"><span class="mi-num">v</span><span class="mi-label">Career</span></a></li>
-            <li><a href="#education" class="mi-link" data-section="education"><span class="mi-num">vi</span><span class="mi-label">Studies</span></a></li>
-            <li><a href="#certifications" class="mi-link" data-section="certifications"><span class="mi-num">vii</span><span class="mi-label">Credentials</span></a></li>
-            <li><a href="#contact" class="mi-link" data-section="contact"><span class="mi-num">viii</span><span class="mi-label">Reach</span></a></li>
-        </ol>
-    </aside>
+        <figure class="hero-portrait" aria-hidden="true">
+          <div class="portrait-frame">
+            <img src="pics/hamzeh-photo.jpg" alt="Hamzeh Emreish, portrait" loading="eager"
+                 onerror="this.parentNode.classList.add('portrait-empty');this.style.display='none'">
+            <div class="portrait-grain"></div>
+            <div class="portrait-vignette"></div>
+          </div>
+          <figcaption class="portrait-caption">
+            <span class="caption-line"></span>
+            <span>NYC · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
 
-    <!-- INVERT FLASH OVERLAY (signature moment) -->
-    <div class="invert-flash" aria-hidden="true"></div>
+      <ul class="hero-stats">
+        <li>
+          <span class="stat-num">7</span>
+          <span class="stat-label">findings reported</span>
+        </li>
+        <li>
+          <span class="stat-num">15<span class="stat-suffix">+</span></span>
+          <span class="stat-label">projects shipped</span>
+        </li>
+        <li>
+          <span class="stat-num">3</span>
+          <span class="stat-label">certifications</span>
+        </li>
+        <li>
+          <span class="stat-num">4<span class="stat-suffix">y</span></span>
+          <span class="stat-label">writing code</span>
+        </li>
+      </ul>
 
-    <main id="main">
+      <p class="hero-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text">Available for work · open to security and full-stack roles.</span>
+      </p>
+    </section>
 
-        <!-- ╔════════════════════════════════════╗
-             ║  COVER — i                         ║
-             ╚════════════════════════════════════╝ -->
-        <section id="hero" class="cover">
-            <div class="cover-inner">
-                <div class="cover-byline">
-                    <span class="byline-label">By</span>
-                    <span class="byline-name">Hamzeh Emreish</span>
-                    <span class="byline-sep">—</span>
-                    <span class="byline-role">Security Researcher &amp; Full-Stack Developer</span>
-                </div>
+    <!-- SELECTED WORK -------------------------------------- -->
+    <section id="work" class="section">
+      <h2 class="section-title">Selected work</h2>
 
-                <h1 class="cover-pullquote">
-                    <span class="pq-line">Most of what I <em>ship</em></span>
-                    <span class="pq-line pq-line-quiet">started as something</span>
-                    <span class="pq-line">I <em>needed</em>.</span>
-                </h1>
+      <ol class="entries">
 
-                <div class="cover-dek">
-                    <p>What follows started as either curiosity or a complaint. Sometimes both.</p>
-                </div>
-
-                <div class="cover-terminal">
-                    <div class="cover-terminal-eyebrow">
-                        <span class="cterm-dot"></span>
-                        <span>LIVE TERMINAL · type <code>help</code> to begin</span>
-                    </div>
-                    <div class="terminal terminal-portal">
-                        <div class="terminal-header">
-                            <div class="terminal-dots">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="terminal-title">visitor@hamzeh.hack — zsh</div>
-                            <div class="terminal-dots-spacer"></div>
-                        </div>
-                        <div class="terminal-body" id="terminal-output">
-                            <div class="terminal-line">
-                                <span class="terminal-welcome">Welcome. Type <span class="cmd-highlight">help</span> for commands. Try <span class="cmd-highlight">cd projects</span>.</span>
-                            </div>
-                        </div>
-                        <div class="terminal-input-line">
-                            <span class="terminal-prompt">visitor@hamzeh.hack:~$&nbsp;</span>
-                            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
-                            <span class="terminal-cursor"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cover-stats">
-                    <div class="cstat">
-                        <div class="cstat-num">3</div>
-                        <div class="cstat-label">Bug Bounties Triaged</div>
-                    </div>
-                    <div class="cstat">
-                        <div class="cstat-num">15<span class="cstat-suffix">+</span></div>
-                        <div class="cstat-label">Projects Shipped</div>
-                    </div>
-                    <div class="cstat">
-                        <div class="cstat-num">3</div>
-                        <div class="cstat-label">Certifications</div>
-                    </div>
-                    <div class="cstat">
-                        <div class="cstat-num">4<span class="cstat-suffix">y</span></div>
-                        <div class="cstat-label">Years Coding</div>
-                    </div>
-                </div>
-
-                <div class="cover-scrollcue">
-                    <span class="scrollcue-line"></span>
-                    <span>continue reading</span>
-                </div>
+        <li class="entry">
+          <a class="entry-link" href="https://github.com/TriV3/MCP-Kali-Server/pull/5" target="_blank" rel="noopener">
+            <div class="entry-meta">
+              <span class="entry-year">2024</span>
+              <span class="entry-tag">Open source</span>
             </div>
-        </section>
+            <h3 class="entry-title">MCP Kali Server</h3>
+            <p class="entry-desc">Contributed twelve recon tools, SSH session management, and reverse shell support to an open-source AI-pentesting framework. Pull request #5 merged after maintainer review.</p>
+            <p class="entry-tech">Python · Flask · Docker · Git</p>
+          </a>
+        </li>
 
-        <!-- ╔════════════════════════════════════╗
-             ║  WHOAMI — ii                       ║
-             ╚════════════════════════════════════╝ -->
-        <section id="about" class="article">
-            <div class="article-head">
-                <div class="folio">§ ii</div>
-                <h2 class="article-title">Whoami</h2>
-                <p class="article-kicker">A short profile, in the writer's own words.</p>
+        <li class="entry">
+          <a class="entry-link" href="https://github.com/sh4faq" target="_blank" rel="noopener">
+            <div class="entry-meta">
+              <span class="entry-year">2024</span>
+              <span class="entry-tag">Security tooling</span>
             </div>
+            <h3 class="entry-title">Burp Suite Automation API</h3>
+            <p class="entry-desc">A REST API extension that exposes Burp's proxy, scanner, and repeater over HTTP — so scans can be scripted and AI tools can drive the testing loop directly.</p>
+            <p class="entry-tech">Python · Jython · Burp Suite · Flask</p>
+          </a>
+        </li>
 
-            <div class="article-grid">
-                <div class="article-body">
-                    <p class="lede"><span class="dropcap">B</span>ased in New York. English at work, Arabic at home. I started writing code in high school, and most of it has come from being annoyed at someone else's software.</p>
-
-                    <p>Burp Suite was a GUI. I wrote an API on top of it. Recon was getting repetitive, so I shipped twelve tools into MCP Kali Server and let an AI run them for me. The maintainer reviewed it and merged. Red Alert 2's voxel format had been undocumented forever. I documented it on a Saturday and shipped a Blender exporter on Sunday. None of this was assigned. I just don't like waiting.</p>
-
-                    <p>Finishing CS at CUNY Lehman in May 2026. I read disassembly for fun and write CRUD apps for money. People keep asking me which side I want to be on. So far the answer is yes.</p>
-                </div>
-
-                <aside class="article-aside">
-                    <figure class="portrait">
-                        <img src="pics/hamzeh-photo.jpg" alt="Hamzeh Emreish" onerror="this.style.display='none';this.parentNode.classList.add('portrait-empty')">
-                        <figcaption>Hamzeh, photographed in NYC.</figcaption>
-                    </figure>
-
-                    <dl class="meta-list">
-                        <div class="meta-row"><dt>Based in</dt><dd>New York, USA</dd></div>
-                        <div class="meta-row"><dt>Studying</dt><dd>CS · CUNY Lehman</dd></div>
-                        <div class="meta-row"><dt>Speaks</dt><dd>EN · AR</dd></div>
-                        <div class="meta-row"><dt>Daily drivers</dt><dd>Python · JS · Burp · Ghidra</dd></div>
-                        <div class="meta-row"><dt>Status</dt><dd><span class="status-dot"></span>Open to new-grad SWE / security roles</dd></div>
-                    </dl>
-                </aside>
+        <li class="entry">
+          <div class="entry-link entry-link--static">
+            <div class="entry-meta">
+              <span class="entry-year">2024</span>
+              <span class="entry-tag">Creative coding</span>
             </div>
-        </section>
+            <h3 class="entry-title">Fruit Ninja, by hand</h3>
+            <p class="entry-desc">A full Fruit Ninja clone played with real fingers over webcam. MediaPipe tracks fingertips for slicing; face tracking creates fish-tank VR parallax through off-axis 3D projection. About five thousand lines of vanilla JavaScript.</p>
+            <p class="entry-tech">JavaScript · Three.js · MediaPipe · Canvas2D · Computer vision</p>
+          </div>
+        </li>
 
-        <!-- ╔════════════════════════════════════╗
-             ║  WORK — iii                        ║
-             ╚════════════════════════════════════╝ -->
-        <section id="projects" class="article">
-            <div class="article-head">
-                <div class="folio">§ iii</div>
-                <h2 class="article-title">Work</h2>
-                <p class="article-kicker">Selected projects across security research, reverse engineering, and product.</p>
+        <li class="entry">
+          <a class="entry-link" href="https://yonkerscarwashdetail.com" target="_blank" rel="noopener">
+            <div class="entry-meta">
+              <span class="entry-year">2025</span>
+              <span class="entry-tag">Product</span>
             </div>
+            <h3 class="entry-title">Yonkers Car Wash</h3>
+            <p class="entry-desc">Full website and CRM for a car-wash business. Four-step VIP signup wizard with live pricing, membership management, Netlify Forms, and remote ICS monitoring over Tailscale. Membership renewals up 35 percent.</p>
+            <p class="entry-tech">HTML · CSS · JS · Netlify · Tailscale · RDP/VNC</p>
+          </a>
+        </li>
 
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="security">Security</button>
-                <button class="filter-btn" data-filter="re">Reverse Engineering</button>
-                <button class="filter-btn" data-filter="webdev">Web Development</button>
-                <button class="filter-btn" data-filter="opensource">Open Source</button>
-                <button class="filter-btn" data-filter="creative">Creative Coding</button>
+        <li class="entry">
+          <div class="entry-link entry-link--static">
+            <div class="entry-meta">
+              <span class="entry-year">2025</span>
+              <span class="entry-tag">Reverse engineering</span>
             </div>
+            <h3 class="entry-title">Flash MMO protocol</h3>
+            <p class="entry-desc">Took apart a multiplayer Flash game's network stack: SmartFoxServer protocol via Wireshark, SWF in JPEXS, native DLLs in Ghidra. Found a client-side anti-cheat bypass — MD5 with a hardcoded salt.</p>
+            <p class="entry-tech">Wireshark · Ghidra · JPEXS · Cheat Engine</p>
+          </div>
+        </li>
 
-            <div class="features">
-                <!-- 01 -->
-                <article class="feature" data-category="security opensource">
-                    <div class="feature-num">01</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Open Source</div>
-                        <h3 class="feature-title">MCP-Kali-Server</h3>
-                        <p class="feature-dek">Contributed twelve recon tools, SSH session management, and reverse shell support to an open-source AI pentesting framework. Merged by the maintainer after review — now part of the upstream project.</p>
-                        <ul class="feature-tech">
-                            <li>Python</li><li>Flask</li><li>Docker</li><li>Git</li>
-                        </ul>
-                        <a href="https://github.com/TriV3/MCP-Kali-Server/pull/5" target="_blank" rel="noopener" class="feature-link">View pull request →</a>
-                    </div>
-                    <div class="feature-media">
-                        <video loop muted playsinline preload="none"><source src="pics/MCP-server.mp4" type="video/mp4"></video>
-                    </div>
-                </article>
-
-                <!-- 02 -->
-                <article class="feature feature--reverse" data-category="security">
-                    <div class="feature-num">02</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Security</div>
-                        <h3 class="feature-title">Burp Suite Automation API</h3>
-                        <p class="feature-dek">A REST API extension that exposes Burp's proxy, scanner, and repeater over HTTP — letting AI agents drive Burp the same way a human would.</p>
-                        <ul class="feature-tech">
-                            <li>Python</li><li>Jython</li><li>Burp Suite</li><li>Flask</li>
-                        </ul>
-                        <a href="https://github.com/sh4faq" target="_blank" rel="noopener" class="feature-link">GitHub →</a>
-                    </div>
-                    <div class="feature-media">
-                        <video loop muted playsinline preload="none"><source src="pics/burp-api.mp4" type="video/mp4"></video>
-                    </div>
-                </article>
-
-                <!-- 03 -->
-                <article class="feature" data-category="creative webdev">
-                    <div class="feature-num">03</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Creative Coding</div>
-                        <h3 class="feature-title">Fruit Ninja, by Hand</h3>
-                        <p class="feature-dek">A full Fruit Ninja clone played with real fingers via webcam. MediaPipe tracks fingertips for slicing; face tracking creates a fish-tank VR parallax through off-axis 3D projection. Five thousand lines of vanilla JavaScript.</p>
-                        <ul class="feature-tech">
-                            <li>JavaScript</li><li>Three.js</li><li>MediaPipe</li><li>Canvas2D</li><li>Computer Vision</li>
-                        </ul>
-                    </div>
-                    <div class="feature-media">
-                        <video loop muted playsinline preload="none"><source src="pics/fruit-ninja.mp4" type="video/mp4"></video>
-                    </div>
-                </article>
-
-                <!-- 04 -->
-                <article class="feature feature--reverse" data-category="webdev">
-                    <div class="feature-num">04</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Product</div>
-                        <h3 class="feature-title">Yonkers Car Wash</h3>
-                        <p class="feature-dek">A full website and CRM for a car wash business. Four-step VIP signup wizard with live pricing, membership management, Netlify Forms, and remote ICS monitoring over Tailscale. Membership renewals up 35%.</p>
-                        <ul class="feature-tech">
-                            <li>HTML/CSS/JS</li><li>Netlify</li><li>Tailscale</li>
-                        </ul>
-                        <a href="https://yonkerscarwashdetail.com" target="_blank" rel="noopener" class="feature-link">Visit site →</a>
-                    </div>
-                    <div class="feature-media">
-                        <video loop muted playsinline preload="none"><source src="pics/yonkers-wash.mp4" type="video/mp4"></video>
-                    </div>
-                </article>
-
-                <!-- 05 -->
-                <article class="feature" data-category="webdev">
-                    <div class="feature-num">05</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Product</div>
-                        <h3 class="feature-title">Full-Stack Merchant System</h3>
-                        <p class="feature-dek">A PERN-stack CRUD application with search, sort, and dark mode. Built end-to-end to learn the stack: React on Vercel, Express &amp; Postgres on Railway.</p>
-                        <ul class="feature-tech">
-                            <li>React</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li>
-                        </ul>
-                        <a href="https://full-stack-pern-app.vercel.app" target="_blank" rel="noopener" class="feature-link">Live demo →</a>
-                    </div>
-                    <div class="feature-media">
-                        <img src="pics/merchant-system.png" alt="Merchant Management System">
-                    </div>
-                </article>
-
-                <!-- 06 -->
-                <article class="feature feature--reverse" data-category="webdev">
-                    <div class="feature-num">06</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Product</div>
-                        <h3 class="feature-title">Wholesome Habits</h3>
-                        <p class="feature-dek">Nutrition consulting site with glassmorphism, 3D tilt cards, cursor tracking, and smooth scroll. Testimonials, FAQ, contact forms, and consultation booking flows.</p>
-                        <ul class="feature-tech">
-                            <li>React</li><li>JS ES6+</li><li>CSS3</li>
-                        </ul>
-                        <a href="https://holisticwholesomehabits.com/" target="_blank" rel="noopener" class="feature-link">Visit site →</a>
-                    </div>
-                    <div class="feature-media">
-                        <video loop muted playsinline preload="none"><source src="pics/wholesome-habits.mp4" type="video/mp4"></video>
-                    </div>
-                </article>
-
-                <!-- 07 -->
-                <article class="feature" data-category="re security">
-                    <div class="feature-num">07</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Reverse Engineering</div>
-                        <h3 class="feature-title">Flash MMO Protocol</h3>
-                        <p class="feature-dek">Took apart a multiplayer Flash game's network stack: SmartFoxServer protocol via Wireshark, SWF in JPEXS, native DLLs in Ghidra. Found a client-side anti-cheat bypass: MD5 with a hardcoded salt.</p>
-                        <ul class="feature-tech">
-                            <li>Wireshark</li><li>Ghidra</li><li>JPEXS</li><li>Cheat Engine</li>
-                        </ul>
-                    </div>
-                    <div class="feature-media feature-media--grid">
-                        <img src="pics/flash-mmo-re.png" alt="JPEXS decompiler">
-                        <img src="pics/flash-mmo-ghidra.png" alt="Ghidra disassembly">
-                    </div>
-                </article>
-
-                <!-- 08 -->
-                <article class="feature feature--reverse" data-category="re">
-                    <div class="feature-num">08</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Reverse Engineering</div>
-                        <h3 class="feature-title">Game Asset RE Toolkit</h3>
-                        <p class="feature-dek">Red Alert 2 modding lacked documented tooling. I reverse engineered VXL, HVA, and MIX through hex dumps, then shipped a Blender addon that exports models to VXL. Wrote a guide for the community.</p>
-                        <ul class="feature-tech">
-                            <li>Python</li><li>Blender API</li><li>Hex Editing</li>
-                        </ul>
-                        <a href="https://github.com/sh4faq/MentalOmega-Modding-Guide" target="_blank" rel="noopener" class="feature-link">GitHub →</a>
-                    </div>
-                    <div class="feature-media">
-                        <img src="pics/game-asset-re.png" alt="Game Asset RE Toolkit">
-                    </div>
-                </article>
-
-                <!-- 09 -->
-                <article class="feature" data-category="security">
-                    <div class="feature-num">09</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Security</div>
-                        <h3 class="feature-title">CodePath Blue Team</h3>
-                        <p class="feature-dek">NGINX with rate-limiting and Amplify monitoring. SNORT + Auditd for intrusion detection. Network log analysis in Splunk and Wireshark to find indicators of compromise.</p>
-                        <ul class="feature-tech">
-                            <li>NGINX</li><li>SNORT</li><li>Auditd</li><li>Splunk</li>
-                        </ul>
-                    </div>
-                    <div class="feature-media">
-                        <img src="pics/codepath-cert.png" alt="CodePath Blue Team Certificate">
-                    </div>
-                </article>
-
-                <!-- 10 -->
-                <article class="feature feature--reverse" data-category="creative">
-                    <div class="feature-num">10</div>
-                    <div class="feature-text">
-                        <div class="feature-tag">Creative Coding</div>
-                        <h3 class="feature-title">Point Cloud Hand Destruction</h3>
-                        <p class="feature-dek">A 3D point cloud in TouchDesigner that you destroy with your hands. MediaPipe tracks the wrist; particles explode outward with noise displacement; a color wave sweeps through. Move your hand back and the form reassembles.</p>
-                        <ul class="feature-tech">
-                            <li>TouchDesigner</li><li>MediaPipe</li><li>GLSL</li><li>Real-time VFX</li>
-                        </ul>
-                    </div>
-                    <div class="feature-media feature-media--grid">
-                        <video loop muted playsinline preload="none"><source src="pics/touchdesigner-pointcloud.mp4" type="video/mp4"></video>
-                        <video loop muted playsinline preload="none"><source src="pics/touchdesigner-vertical.mov" type="video/mp4"></video>
-                    </div>
-                </article>
+        <li class="entry">
+          <a class="entry-link" href="https://github.com/sh4faq/MentalOmega-Modding-Guide" target="_blank" rel="noopener">
+            <div class="entry-meta">
+              <span class="entry-year">2024</span>
+              <span class="entry-tag">Reverse engineering</span>
             </div>
+            <h3 class="entry-title">Game asset RE toolkit</h3>
+            <p class="entry-desc">Red Alert 2 modding lacked documented tooling. I reverse engineered VXL, HVA, and MIX through hex dumps, then shipped a Blender addon that exports models to VXL. Wrote a guide for the community.</p>
+            <p class="entry-tech">Python · Blender API · Hex editing</p>
+          </a>
+        </li>
 
-            <h3 class="more-title">Also of note</h3>
-            <div class="more-grid">
-                <article class="more-card" data-category="security">
-                    <div class="more-tag">Security</div>
-                    <h4>Bug Bounty Hunting</h4>
-                    <p>Active on HackerOne, Bugcrowd, and Intigriti. Findings span patch-bypass research, OAuth token exposure, SSRF chaining, hardcoded credential discovery, and authentication enumeration across enterprise observability, consumer fitness, DNS / internet infrastructure, enterprise LMS, and cloud-infrastructure platforms. Notable work includes a Critical (CVSS 9.1) parser allowlist bypass enabling LFI, OAuth token exposure with confirmed account modification and 200M+ user enumeration, and a High (CVSS 8.6) SSRF reaching cloud metadata via 302-redirect bypass. Program names are not listed because most engagements are under non-disclosure; available on request. Earlier valid finding on unauthenticated mail relay with DKIM/SPF-aligned spoofing.</p>
-                    <div class="more-tech"><span>Burp Suite</span><span>Recon</span><span>API Testing</span><span>Patch-Bypass Research</span></div>
-                </article>
-                <article class="more-card" data-category="security">
-                    <div class="more-tag">Security</div>
-                    <h4>HackTheBox Labs</h4>
-                    <p>Working through HTB labs on box exploitation, privesc, web app vulns, and network pivoting. Mostly Linux, some Windows.</p>
-                    <div class="more-tech"><span>Pentesting</span><span>CTF</span><span>Linux</span></div>
-                </article>
+        <li class="entry">
+          <a class="entry-link" href="https://full-stack-pern-app.vercel.app" target="_blank" rel="noopener">
+            <div class="entry-meta">
+              <span class="entry-year">2024</span>
+              <span class="entry-tag">Full-stack</span>
             </div>
-        </section>
+            <h3 class="entry-title">Full-stack merchant system</h3>
+            <p class="entry-desc">A PERN-stack CRUD application with search, sort, and dark mode. Built end-to-end to learn the stack: React on Vercel, Express and Postgres on Railway.</p>
+            <p class="entry-tech">React · Node.js · Express · PostgreSQL · Vercel · Railway</p>
+          </a>
+        </li>
 
-        <!-- ╔════════════════════════════════════╗
-             ║  TOOLS — iv  (credits page)        ║
-             ╚════════════════════════════════════╝ -->
-        <section id="skills" class="article credits">
-            <div class="article-head">
-                <div class="folio">§ iv</div>
-                <h2 class="article-title">Tools of the Trade</h2>
-                <p class="article-kicker">Categorized as a credits page, the way old films name everyone.</p>
+        <li class="entry">
+          <div class="entry-link entry-link--static">
+            <div class="entry-meta">
+              <span class="entry-year">2025</span>
+              <span class="entry-tag">Creative coding</span>
             </div>
+            <h3 class="entry-title">Point-cloud hand destruction</h3>
+            <p class="entry-desc">A 3D point cloud in TouchDesigner that you destroy with your hands. MediaPipe tracks the wrist; particles explode outward with noise displacement; a color wave sweeps through. Move your hand back and the form reassembles.</p>
+            <p class="entry-tech">TouchDesigner · MediaPipe · GLSL · Real-time VFX</p>
+          </div>
+        </li>
 
-            <div class="credits-grid">
-                <div class="credit-row">
-                    <div class="credit-cat">Ethical Hacking</div>
-                    <div class="credit-list">Burp Suite · Metasploit · SQLMap · Hydra · John the Ripper · Nikto</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Recon &amp; Enumeration</div>
-                    <div class="credit-list">FFUF · gobuster · dirb · subfinder · httpx · nuclei · arjun · assetfinder · subzy · waybackurls · shodan · fierce · byp4xx · searchsploit · wpscan · enum4linux</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">IDS/IPS &amp; Defense</div>
-                    <div class="credit-list">Splunk · SNORT · Auditd · NGINX/Amplify · Windows Event Viewer</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Network</div>
-                    <div class="credit-list">Wireshark · tcpdump · Windows RDP · SSH · Nmap</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Programming</div>
-                    <div class="credit-list">Python · JavaScript · Bash · Java · REST APIs · Security Automation</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Full-Stack Web</div>
-                    <div class="credit-list">React · Node.js · Express · PostgreSQL · HTML/CSS · Vite · Vercel · Railway</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Reverse Engineering</div>
-                    <div class="credit-list">Ghidra · Cheat Engine · Binary/Hex Analysis · Protocol Analysis · Struct Parsing · Blender Python · JPEXS</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">MCP &amp; API Development</div>
-                    <div class="credit-list">Flask REST · FastMCP · Model Context Protocol · API Integration · JSON/HTTP · SSE · AI Integration · Git/GitHub</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Virtualization</div>
-                    <div class="credit-list">Proxmox · Docker · VMware · VirtualBox · Hyper-V · VPS</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Security Concepts</div>
-                    <div class="credit-list">Active Directory · TCP/IP · DNS · IP Addressing · Group Policy · CVE/CVSS · NIST/ISO</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">ICS &amp; Embedded</div>
-                    <div class="credit-list">Carwash Systems · PLC Diagnostics · Sensor Timing · Remote Monitoring</div>
-                </div>
-                <div class="credit-row">
-                    <div class="credit-cat">Leadership</div>
-                    <div class="credit-list">Team Management (15+) · Cross-Departmental Coordination · Member Experience · Service Recovery · Onboarding Programs · Performance Reviews · Operations · Budget Planning</div>
-                </div>
-            </div>
-        </section>
+      </ol>
 
-        <!-- ╔════════════════════════════════════╗
-             ║  CAREER — v  (CV column)           ║
-             ╚════════════════════════════════════╝ -->
-        <section id="experience" class="article cv">
-            <div class="article-head">
-                <div class="folio">§ v</div>
-                <h2 class="article-title">Career</h2>
-                <p class="article-kicker">A working column, dates in the margin.</p>
-            </div>
+      <p class="section-after">
+        More on <a href="https://github.com/sh4faq" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+    </section>
 
-            <ol class="cv-list">
-                <li class="cv-item">
-                    <div class="cv-date">Jan 2024 — Present</div>
-                    <div class="cv-body">
-                        <h3 class="cv-company">Bug Bounty Hunter <span class="cv-role">— HackerOne / Bugcrowd / Intigriti</span></h3>
-                        <ul>
-                            <li>Enterprise observability platform (Intigriti, Critical, CVSS 9.1, duplicated): Parser allowlist bypass in the platform's SQL expression engine. The fix for CVE-2026-27876 only guarded one of five AST fields skipped by vitess walkSubtree (Into); load_file() inside an ORDER BY clause reaches arbitrary files on disk. Same primitive class as CVE-2024-9264.</li>
-                            <li>Enterprise LMS platform (HackerOne, High, submitted): Email injection in a Frappe-based contact form endpoint. The sender parameter is used as the email recipient rather than the sender address, allowing attacker-controlled outbound mail from the platform's legitimate domain to arbitrary recipients with full SPF/DKIM/DMARC alignment and no rate limit. Working PoC demonstrated end-to-end with a chained phishing payload routing victims through an OAuth-flow redirect.</li>
-                            <li>Major cloud provider (Intigriti, High, CVSS 8.6, submitted May 14 2026, awaiting triage): SSRF in the provider's GenAI Knowledge Base web crawler. Initial fetch validates the hostname against a deny-list and resolves to reject private IPs, but the crawler follows HTTP 302 redirects without re-validating the destination. A redirect trampoline reaches 169.254.169.254 cloud metadata and internal services.</li>
-                            <li>Enterprise LMS platform (HackerOne, High, CVSS 7.5, duplicated): Admin user enumeration via Cognito ForgotPassword API. Unauthenticated GraphQL query leaks the admin client_id; using it, Cognito's ForgotPassword endpoint returns distinct responses for valid versus invalid usernames (CodeDeliveryDetails vs UserNotFoundException), enabling admin email enumeration with a first-letter leak in the destination field. Patched shortly after testing.</li>
-                            <li>Major consumer fitness platform (Bugcrowd, Informational by program triage): OAuth access tokens embedded in window.__STATE__ on the public OAuth authorize page enable authentication bypass without completing the OAuth flow. Confirmed write access against the API (PUT to a user resource returned HTTP 200 with first_name modified) and read access to mass user enumeration across user IDs 1 through 231M+ via email, name, and query searches without rate limiting. Program ruled the modified account was a test user (P5/Informational); underlying primitive remains an unauthenticated account-modification + bulk-PII channel.</li>
-                            <li>Major DNS / internet infrastructure provider (Bugcrowd, triaged as duplicate): Production API credentials (CWE-798, CWE-522) hardcoded in a publicly-accessible JavaScript config on the provider's domain-suggestion product, granting unauthenticated access to all seven backend API endpoints. Original duplicate filed earlier in 2025 with restricted key scope.</li>
-                            <li>Mail relay vulnerability (Medium, triaged valid): email spoofing with valid DKIM/SPF.</li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="cv-item">
-                    <div class="cv-date">Nov 2023 — Present</div>
-                    <div class="cv-body">
-                        <h3 class="cv-company">Equinox <span class="cv-role">— Manager on Duty, Scarsdale, NY</span></h3>
-                        <ul>
-                            <li>Promoted from Front Desk Associate at Mamaroneck to Manager on Duty at Scarsdale; rotated through flagship clubs at Hudson Yards and Printing House.</li>
-                            <li>Contribute to strategy meetings with the General Manager, Regional Training Manager, and Facility Manager. Bring floor-level observations on member retention, personal training conversion, facility quality, and staff performance.</li>
-                            <li>Rebuilt the front desk schedule and shift structure. Closed a $1,500 labor budget overrun and brought it to zero within three months.</li>
-                            <li>Run point on in-house tech for the club: BitLocker recovery, Windows blue screens, POS system setup and reconfiguration, audio system faults, member-facing hardware. Diagnose the issue first; only escalate to the vendor when a part has genuinely failed or needs replacement.</li>
-                            <li>Walk the entire club daily. Catch cleanliness inconsistencies and bring them to management for follow-through.</li>
-                            <li>Inspect equipment on every walkthrough. When a piece of cardio or strength gear is failing or unsafe, tag it Out of Service, power it down at the source for treadmills, and report it up the same shift.</li>
-                            <li>Caught a member who had been accessing the club on someone else's account for nearly a month. The photo on file almost matched, but on closer inspection the match was off. Raised it to the GM, who verified and took action.</li>
-                            <li>Coach the front desk team on the engagement standards a luxury club requires. Phones off the desk. iPad and laptop ready for check-in and security verification. Greet every member like a guest; the desk is the first department a member sees, and without that level of attention the experience drops to the same as any other gym.</li>
-                            <li>Trained and onboarded more than ten new front desk team members. Cross-trained in the Pro Shop. CPR and AED certified.</li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="cv-item">
-                    <div class="cv-date">May 2025 — Present</div>
-                    <div class="cv-body">
-                        <h3 class="cv-company">Yonkers Car Wash <span class="cv-role">— Website &amp; Management System</span></h3>
-                        <ul>
-                            <li>Full-stack membership and billing site. Remote ICS monitoring via RDP/VNC over Tailscale.</li>
-                            <li>Managed technical operations and marketing. Increased renewals 35% via automated email.</li>
-                            <li>Supervised and trained a 15-person team, monitored operations remotely.</li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="cv-item">
-                    <div class="cv-date">Oct 2023 — Feb 2025</div>
-                    <div class="cv-body">
-                        <h3 class="cv-company">Central Deli &amp; Convenience <span class="cv-role">— Co-Owner, Mamaroneck, NY</span></h3>
-                        <ul>
-                            <li>Hired and trained a team of seven. Established service standards.</li>
-                            <li>Owned finances: expense tracking, overhead, profit, forecasts in Excel.</li>
-                            <li>Food safety, inventory, and quality control.</li>
-                        </ul>
-                    </div>
-                </li>
-            </ol>
-        </section>
+    <!-- FINDINGS ------------------------------------------- -->
+    <section id="findings" class="section">
+      <h2 class="section-title">Findings</h2>
+      <p class="section-intro">
+        Bug bounty research on HackerOne, Bugcrowd, and Intigriti. Program names are not listed because most engagements are under non-disclosure; available on request.
+      </p>
 
-        <!-- ╔════════════════════════════════════╗
-             ║  STUDIES — vi                      ║
-             ╚════════════════════════════════════╝ -->
-        <section id="education" class="article">
-            <div class="article-head">
-                <div class="folio">§ vi</div>
-                <h2 class="article-title">Studies</h2>
-            </div>
-            <div class="cards-three">
-                <article class="lite-card">
-                    <h3>CUNY Lehman College</h3>
-                    <p class="lite-meta">B.S. Computer Science · GPA 3.4 · Expected May 2026</p>
-                    <p>Coursework: Data Structures, Full-Stack Web, AI, Machine Learning, Robotics, Discrete Math, Vector Calculus, Probability.</p>
-                </article>
-                <article class="lite-card">
-                    <h3>SUNY Westchester CC</h3>
-                    <p class="lite-meta">Computer Programming · 2 years</p>
-                    <p>Programming I &amp; II.</p>
-                </article>
-                <article class="lite-card">
-                    <h3>Self-Directed</h3>
-                    <p class="lite-meta">Cybersecurity · 2022 — Present</p>
-                    <p>CTFs, HackTheBox, bug bounty programs, PortSwigger Academy, security research.</p>
-                </article>
-            </div>
-        </section>
+      <ol class="entries">
 
-        <!-- ╔════════════════════════════════════╗
-             ║  CREDENTIALS — vii                 ║
-             ╚════════════════════════════════════╝ -->
-        <section id="certifications" class="article">
-            <div class="article-head">
-                <div class="folio">§ vii</div>
-                <h2 class="article-title">Credentials</h2>
-            </div>
-            <div class="cards-three">
-                <article class="lite-card lite-card--cert">
-                    <div class="cert-stamp">✓</div>
-                    <h3>CompTIA Security+</h3>
-                    <p class="lite-meta">SY0-701 · July 29, 2024</p>
-                </article>
-                <article class="lite-card lite-card--cert">
-                    <div class="cert-stamp">✓</div>
-                    <h3>Google Cybersecurity</h3>
-                    <p class="lite-meta">Professional Certificate · Aug 5, 2024</p>
-                </article>
-                <article class="lite-card lite-card--cert">
-                    <div class="cert-stamp">✓</div>
-                    <h3>CodePath Cybersecurity</h3>
-                    <p class="lite-meta">Intermediate Cyber &amp; Python · Oct 15, 2024</p>
-                </article>
-            </div>
-        </section>
+        <li class="entry finding">
+          <p class="finding-severity">Critical · CVSS 9.1 · duplicated · Intigriti</p>
+          <h3 class="finding-title">Parser allowlist bypass in an enterprise observability platform's SQL expression engine</h3>
+          <p class="finding-desc">The fix for CVE-2026-27876 only guarded one of five AST fields skipped by vitess <code>walkSubtree</code> (<code>Into</code>); <code>load_file()</code> inside an <code>ORDER BY</code> clause reaches arbitrary files on disk. Same primitive class as CVE-2024-9264.</p>
+        </li>
 
-        <!-- ╔════════════════════════════════════╗
-             ║  REACH — viii                      ║
-             ╚════════════════════════════════════╝ -->
-        <section id="contact" class="article reach">
-            <div class="article-head">
-                <div class="folio">§ viii</div>
-                <h2 class="article-title">Reach</h2>
-                <p class="article-kicker">For work, collaboration, or curiosity.</p>
-            </div>
+        <li class="entry finding">
+          <p class="finding-severity">High · submitted, awaiting triage · HackerOne</p>
+          <h3 class="finding-title">Email injection on an enterprise LMS platform's Frappe-based contact form</h3>
+          <p class="finding-desc">The <code>sender</code> parameter is used as the email recipient rather than the sender address, enabling attacker-controlled outbound mail from the platform's legitimate domain with full SPF/DKIM/DMARC alignment and no rate limit. Working end-to-end PoC with chained phishing payload.</p>
+        </li>
 
-            <div class="reach-list">
-                <button class="reach-link reach-link--copy" data-copy="hamzehemreish37@gmail.com" data-copy-label="email">
-                    <span class="reach-cmd">email</span>
-                    <span class="reach-text">hamzehemreish37@gmail.com</span>
-                    <span class="reach-action">copy →</span>
-                </button>
-                <a href="https://www.linkedin.com/in/hamzeh-emreish" target="_blank" rel="noopener" class="reach-link">
-                    <span class="reach-cmd">linkedin</span>
-                    <span class="reach-text">linkedin.com/in/hamzeh-emreish</span>
-                    <span class="reach-action">open →</span>
-                </a>
-                <a href="https://github.com/sh4faq" target="_blank" rel="noopener" class="reach-link">
-                    <span class="reach-cmd">github</span>
-                    <span class="reach-text">github.com/sh4faq</span>
-                    <span class="reach-action">open →</span>
-                </a>
-                <a href="Hamzeh_Emreish_Resume.pdf" download class="reach-link">
-                    <span class="reach-cmd">resume</span>
-                    <span class="reach-text">Hamzeh_Emreish_Resume.pdf</span>
-                    <span class="reach-action">download →</span>
-                </a>
-            </div>
-        </section>
+        <li class="entry finding">
+          <p class="finding-severity">High · CVSS 8.6 · submitted May 14 2026, awaiting triage · Intigriti</p>
+          <h3 class="finding-title">SSRF in a major cloud provider's GenAI Knowledge Base web crawler</h3>
+          <p class="finding-desc">HTTP 302 redirect bypass of hostname deny-list and IP resolution check reaches 169.254.169.254 cloud metadata and internal infrastructure. A redirect trampoline grants access to cloud user-data and program-provided SSRF endpoints.</p>
+        </li>
 
-        <!-- COLOPHON -->
-        <footer class="colophon">
-            <div class="colophon-rule"></div>
-            <div class="colophon-grid">
-                <div>
-                    <div class="colo-label">Set in</div>
-                    <div class="colo-value">Instrument Serif &amp; IBM Plex</div>
-                </div>
-                <div>
-                    <div class="colo-label">Built with</div>
-                    <div class="colo-value">Vanilla JS, hand-written CSS</div>
-                </div>
-                <div>
-                    <div class="colo-label">Filed from</div>
-                    <div class="colo-value">New York City</div>
-                </div>
-                <div>
-                    <div class="colo-label">©</div>
-                    <div class="colo-value">2026 Hamzeh Emreish</div>
-                </div>
-            </div>
-        </footer>
+        <li class="entry finding">
+          <p class="finding-severity">High · CVSS 7.5 · duplicated · HackerOne</p>
+          <h3 class="finding-title">Admin user enumeration on an enterprise LMS platform via Cognito ForgotPassword</h3>
+          <p class="finding-desc">Unauthenticated GraphQL query leaks the admin <code>client_id</code>; Cognito's ForgotPassword endpoint returns distinct responses for valid versus invalid usernames (<code>CodeDeliveryDetails</code> vs <code>UserNotFoundException</code>), enabling admin email enumeration with a first-letter leak in the destination field. Patched shortly after testing.</p>
+        </li>
 
-    </main>
+        <li class="entry finding">
+          <p class="finding-severity">P5 / Informational by program triage · Bugcrowd</p>
+          <h3 class="finding-title">OAuth token exposure on a major consumer fitness platform</h3>
+          <p class="finding-desc">Access tokens embedded in <code>window.__STATE__</code> on the public OAuth authorize page enabled authentication bypass — confirmed account modification (<code>PUT</code> to a user resource returned <code>200 OK</code>, <code>first_name</code> modified) and mass user enumeration across IDs 1 through 231M+ via email, name, and query searches without rate limiting. Program ruled the modified account was a test user.</p>
+        </li>
 
-    <!-- LIGHTBOX (click any image/video to magnify) -->
-    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Magnified view">
-        <button class="lightbox-close" aria-label="Close magnified view">×</button>
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-        <div class="lightbox-frame" id="lightbox-frame"></div>
-        <div class="lightbox-hint">esc · click outside to close</div>
+        <li class="entry finding">
+          <p class="finding-severity">CWE-798 / CWE-522 · duplicated · Bugcrowd</p>
+          <h3 class="finding-title">Hardcoded production API credentials in a DNS / internet infrastructure provider's domain product</h3>
+          <p class="finding-desc">Production API credentials hardcoded in a publicly-accessible JavaScript config on the provider's domain-suggestion product, granting unauthenticated access to all seven backend API endpoints. Triaged as duplicate of an earlier April 2025 report with restricted key scope.</p>
+        </li>
+
+        <li class="entry finding">
+          <p class="finding-severity">Medium · triaged valid</p>
+          <h3 class="finding-title">Unauthenticated mail relay</h3>
+          <p class="finding-desc">Email spoofing with valid DKIM/SPF signatures. Provided CVSS analysis and remediation guidance.</p>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- EXPERIENCE ----------------------------------------- -->
+    <section id="experience" class="section">
+      <h2 class="section-title">Experience</h2>
+
+      <ol class="entries">
+
+        <li class="entry experience">
+          <div class="entry-meta">
+            <span class="entry-year">Nov 2023 — Present</span>
+          </div>
+          <h3 class="entry-title">Equinox · Manager on Duty</h3>
+          <p class="entry-sub">Scarsdale, NY. Promoted from Front Desk Associate at Mamaroneck. Flagship rotations at Hudson Yards and Printing House.</p>
+          <ul class="experience-points">
+            <li>Contribute to strategy meetings with the General Manager, Regional Training Manager, and Facility Manager on member retention, personal-training conversion, facility quality, and staff performance.</li>
+            <li>Rebuilt front desk schedule and shift structure; closed a $1,500 labor budget overrun to zero in three months.</li>
+            <li>Run point on in-house tech for the club — BitLocker recovery, Windows blue screens, POS configuration, audio system faults, member-facing hardware. Diagnose first; escalate to the vendor only when a part has genuinely failed.</li>
+            <li>Daily walkthroughs surface cleanliness and equipment risk. Caught a member accessing the club on someone else's account for nearly a month from a photo-ID mismatch the desk had missed; escalated to GM.</li>
+            <li>Coach the front desk team on luxury-club engagement standards. Trained 10+ teammates; cross-trained in Pro Shop. CPR/AED certified.</li>
+          </ul>
+        </li>
+
+        <li class="entry experience">
+          <div class="entry-meta">
+            <span class="entry-year">May 2025 — Present</span>
+          </div>
+          <h3 class="entry-title">Yonkers Car Wash · Web &amp; operations</h3>
+          <p class="entry-sub">Yonkers, NY. Built and run a full membership/billing site, remote infrastructure, and the operations behind it.</p>
+          <ul class="experience-points">
+            <li>Full-stack membership and billing site; remote ICS monitoring via RDP/VNC over Tailscale.</li>
+            <li>Managed technical operations and marketing. Increased renewals 35% through automated email.</li>
+            <li>Supervised and trained a 15-person team; monitored operations remotely.</li>
+          </ul>
+        </li>
+
+        <li class="entry experience">
+          <div class="entry-meta">
+            <span class="entry-year">Oct 2023 — Feb 2025</span>
+          </div>
+          <h3 class="entry-title">Central Deli &amp; Convenience · Co-owner</h3>
+          <p class="entry-sub">Mamaroneck, NY.</p>
+          <ul class="experience-points">
+            <li>Hired and trained a team of seven; established service standards.</li>
+            <li>Owned finances — expense tracking, overhead, profit, forecasting in Excel.</li>
+            <li>Food safety, inventory, and quality control.</li>
+          </ul>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- EDUCATION + CREDENTIALS ---------------------------- -->
+    <section id="education" class="section">
+      <h2 class="section-title">Education &amp; credentials</h2>
+
+      <ul class="education-list">
+        <li>
+          <strong>CUNY Lehman College</strong> — B.S. Computer Science, GPA 3.4, expected May 2026.<br>
+          <span class="muted">Data structures, full-stack web, AI, machine learning, robotics, discrete math, vector calculus, probability.</span>
+        </li>
+        <li>
+          <strong>SUNY Westchester CC</strong> — Computer Programming (Programming I &amp; II), two years.
+        </li>
+        <li>
+          <strong>Self-directed cybersecurity</strong> — 2022 to present. CTFs, HackTheBox, bug bounty programs, PortSwigger Academy.
+        </li>
+      </ul>
+
+      <ul class="credentials-list">
+        <li><span class="check">✓</span> CompTIA Security+ <span class="cred-meta">SY0-701 · July 29, 2024</span></li>
+        <li><span class="check">✓</span> Google Cybersecurity Professional Certificate <span class="cred-meta">August 5, 2024</span></li>
+        <li><span class="check">✓</span> CodePath Intermediate Cybersecurity &amp; Python <span class="cred-meta">October 15, 2024</span></li>
+      </ul>
+    </section>
+
+    <!-- ABOUT ---------------------------------------------- -->
+    <section id="about" class="section">
+      <h2 class="section-title">About</h2>
+
+      <div class="about-body">
+        <p>Based in New York. English at work, Arabic at home. I started writing code in high school, and most of it has come from being annoyed at someone else's software.</p>
+
+        <p>Burp Suite was a GUI; I wrote an API on top of it. Recon was getting repetitive, so I shipped twelve tools into MCP Kali Server and let an AI run them for me. The maintainer reviewed it and merged. Red Alert 2's voxel format had been undocumented forever; I documented it on a Saturday and shipped a Blender exporter on Sunday. None of this was assigned. I just don't like waiting.</p>
+
+        <p>Finishing CS at CUNY Lehman in May 2026. I read disassembly for fun and write CRUD apps for money. People keep asking me which side I want to be on. So far the answer is yes.</p>
+
+        <p class="about-stack">
+          <strong>Daily drivers:</strong>
+          Python · JavaScript · Bash · Java · React · Node.js · Express · PostgreSQL.
+          <strong>Security:</strong>
+          Burp Suite · Ghidra · Cheat Engine · Wireshark · Nmap · SQLMap · Hydra · John the Ripper · Metasploit · SNORT · Splunk · Auditd · subfinder · httpx · nuclei · ffuf · gobuster · arjun · subzy · waybackurls · Shodan.
+          <strong>Infrastructure:</strong>
+          Proxmox · Docker · VMware · Hyper-V · Tailscale · RDP/VNC · Active Directory · TCP/IP · DNS · Group Policy.
+        </p>
+      </div>
+    </section>
+
+    <!-- REACH ---------------------------------------------- -->
+    <section id="reach" class="section">
+      <h2 class="section-title">Reach</h2>
+
+      <ul class="reach-list">
+        <li>
+          <span class="reach-key">email</span>
+          <a href="mailto:hamzehemreish37@gmail.com">hamzehemreish37@gmail.com</a>
+        </li>
+        <li>
+          <span class="reach-key">github</span>
+          <a href="https://github.com/sh4faq" target="_blank" rel="noopener">github.com/sh4faq</a>
+        </li>
+        <li>
+          <span class="reach-key">linkedin</span>
+          <a href="https://www.linkedin.com/in/hamzeh-emreish" target="_blank" rel="noopener">linkedin.com/in/hamzeh-emreish</a>
+        </li>
+        <li>
+          <span class="reach-key">resume</span>
+          <a href="Hamzeh_Emreish_Resume.pdf" download>Hamzeh_Emreish_Resume.pdf</a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- TERMINAL EASTER EGG (hidden until triggered) -->
+  <div id="terminal-overlay" class="terminal-overlay" aria-hidden="true">
+    <div class="terminal-frame">
+      <div class="terminal-header">
+        <div class="terminal-dots" aria-hidden="true">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-title">visitor@hamzeh.hack — zsh</div>
+        <button class="terminal-close" id="terminal-close" aria-label="Close terminal">esc</button>
+      </div>
+      <div class="terminal-body" id="terminal-output">
+        <div class="terminal-line">
+          <span class="terminal-welcome">Welcome. Type <span class="cmd-highlight">help</span> for commands. Try <span class="cmd-highlight">about</span>.</span>
+        </div>
+      </div>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt">visitor@hamzeh.hack:~$&nbsp;</span>
+        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
+        <span class="terminal-cursor"></span>
+      </div>
     </div>
+  </div>
 
-    <!-- TOAST -->
-    <div class="toast" id="toast" aria-live="polite"></div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 Hamzeh Emreish</span>
+      <span class="footer-hint">Press <kbd>/</kbd> to open a terminal.</span>
+    </div>
+  </footer>
 
-    <script src="js/site.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

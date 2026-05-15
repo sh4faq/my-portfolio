@@ -19,18 +19,19 @@
         help: () => [
             '<span class="terminal-output-text">Available commands:</span>',
             '',
-            '  <span class="cmd-highlight">about</span>        — Who I am',
-            '  <span class="cmd-highlight">skills</span>       — Technical skills',
-            '  <span class="cmd-highlight">projects</span>     — View my work',
-            '  <span class="cmd-highlight">experience</span>   — Work history',
-            '  <span class="cmd-highlight">education</span>    — Academic background',
-            '  <span class="cmd-highlight">certs</span>        — Certifications',
-            '  <span class="cmd-highlight">contact</span>      — Get in touch',
-            '  <span class="cmd-highlight">resume</span>       — Download my resume',
-            '  <span class="cmd-highlight">clear</span>        — Clear terminal',
-            '  <span class="cmd-highlight">whoami</span>       — Who are you?',
-            '  <span class="cmd-highlight">ls</span>           — List sections',
-            '  <span class="cmd-highlight">cd &lt;section&gt;</span> — Navigate to section',
+            '  <span class="cmd-highlight">about</span>        — who I am',
+            '  <span class="cmd-highlight">skills</span>       — technical skills',
+            '  <span class="cmd-highlight">work</span>         — selected projects',
+            '  <span class="cmd-highlight">findings</span>     — bug bounty findings',
+            '  <span class="cmd-highlight">experience</span>   — work history',
+            '  <span class="cmd-highlight">education</span>    — academic background',
+            '  <span class="cmd-highlight">certs</span>        — certifications',
+            '  <span class="cmd-highlight">contact</span>      — get in touch',
+            '  <span class="cmd-highlight">resume</span>       — download my resume',
+            '  <span class="cmd-highlight">clear</span>        — clear terminal',
+            '  <span class="cmd-highlight">whoami</span>       — who are you?',
+            '  <span class="cmd-highlight">ls</span>           — list sections',
+            '  <span class="cmd-highlight">cd &lt;section&gt;</span> — navigate to section',
         ],
 
         about: () => [
@@ -68,12 +69,12 @@
         experience: () => [
             '<span class="terminal-success">Experience</span>',
             '',
-            '  <span class="cmd-highlight">Yonkers Car Wash</span> — Website & Management System (2025–Present)',
-            '  <span class="cmd-highlight">Equinox</span> — Manager on Duty (2023–Present)',
-            '  <span class="cmd-highlight">Central Deli</span> — Co-Owner (2023–2025)',
-            '  <span class="cmd-highlight">Bug Bounty</span> — HackerOne / Bugcrowd (2024–Present)',
+            '  <span class="cmd-highlight">Equinox</span>           Manager on Duty (2023 — Present)',
+            '  <span class="cmd-highlight">Yonkers Car Wash</span>  Website & operations (2025 — Present)',
+            '  <span class="cmd-highlight">Central Deli</span>      Co-owner (2023 — 2025)',
+            '  <span class="cmd-highlight">Bug Bounty</span>        HackerOne / Bugcrowd / Intigriti (2024 — Present)',
             '',
-            'Scroll down or type <span class="cmd-highlight">cd experience</span> to see full details.',
+            'Type <span class="cmd-highlight">cd experience</span> to scroll there.',
         ],
 
         education: () => [
@@ -117,12 +118,12 @@
         whoami: () => ['<span class="terminal-output-text">visitor — but feel free to explore.</span>'],
 
         ls: () => [
-            '<span class="terminal-output-text">drwxr-xr-x  projects/</span>',
-            '<span class="terminal-output-text">drwxr-xr-x  skills/</span>',
+            '<span class="terminal-output-text">drwxr-xr-x  work/</span>',
+            '<span class="terminal-output-text">drwxr-xr-x  findings/</span>',
             '<span class="terminal-output-text">drwxr-xr-x  experience/</span>',
             '<span class="terminal-output-text">drwxr-xr-x  education/</span>',
-            '<span class="terminal-output-text">drwxr-xr-x  certifications/</span>',
-            '<span class="terminal-output-text">drwxr-xr-x  contact/</span>',
+            '<span class="terminal-output-text">drwxr-xr-x  about/</span>',
+            '<span class="terminal-output-text">drwxr-xr-x  reach/</span>',
         ],
 
         exit: () => ['<span class="terminal-output-text">Nice try. There is no escape.</span>'],
@@ -155,9 +156,13 @@
         // cd <section>
         if (base === 'cd' && parts[1]) {
             const sectionMap = {
-                projects: 'projects', skills: 'skills', experience: 'experience',
-                education: 'education', certifications: 'certifications', contact: 'contact',
-                home: 'hero', terminal: 'hero',
+                work: 'work', projects: 'work',
+                findings: 'findings', bugs: 'findings',
+                experience: 'experience',
+                education: 'education', credentials: 'education',
+                about: 'about',
+                reach: 'reach', contact: 'reach',
+                home: 'top', top: 'top',
             };
             const target = sectionMap[parts[1]];
             if (target) {
@@ -248,21 +253,13 @@
         }
     });
 
-    // Click anywhere on terminal focuses input
-    document.querySelector('.terminal').addEventListener('click', () => {
-        input.focus();
-    });
-
-    // Mobile auto-demo
-    if ('ontouchstart' in window && window.innerWidth < 768) {
-        const demoCmds = ['help', 'about', 'projects'];
-        let i = 0;
-        function runDemo() {
-            if (i >= demoCmds.length) return;
-            handleCommand(demoCmds[i]);
-            i++;
-            setTimeout(runDemo, 2000);
-        }
-        setTimeout(runDemo, 1500);
+    // Click anywhere inside the terminal frame focuses the input
+    const frame = document.querySelector('.terminal-frame');
+    if (frame) {
+        frame.addEventListener('click', (e) => {
+            // Don't steal focus from the close button
+            if (e.target.closest('.terminal-close')) return;
+            input.focus();
+        });
     }
 })();
