@@ -135,10 +135,11 @@ video {
   }
 }
 
-/* Hero gets the full container width; sections below stay
-   contained for prose readability. */
+/* All sections (including hero) use the wider container.
+   Prose blocks inside specific sections (About) self-cap with max-width
+   on their inner elements for readability. */
 .section {
-  max-width: var(--col);
+  max-width: var(--col-wide);
   margin: var(--rhythm) auto 0;
 }
 
@@ -371,6 +372,93 @@ video {
 @media (max-width: 640px) {
   .hero-pitch {
     font-size: 1.02rem;
+  }
+}
+
+/* Hero verified credential — Anthropic CVP approval. Sits between
+   pitch and terminal, refined credential card with champagne accent. */
+.hero-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.85rem;
+  padding: 0.85rem 1.15rem 0.85rem 1rem;
+  border: 1px solid rgba(200, 169, 106, 0.28);
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200, 169, 106, 0.08),
+      rgba(200, 169, 106, 0.02)
+    ),
+    rgba(20, 17, 15, 0.6);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-verified::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 169, 106, 0.5) 0%,
+    rgba(200, 169, 106, 0) 35%,
+    rgba(200, 169, 106, 0) 65%,
+    rgba(200, 169, 106, 0.3) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hero-verified:hover {
+  border-color: rgba(200, 169, 106, 0.45);
+}
+
+.verified-icon {
+  display: inline-flex;
+  color: var(--accent);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(200, 169, 106, 0.35));
+}
+
+.verified-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.verified-title {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.verified-sub {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  line-height: 1.3;
+}
+
+@media (max-width: 480px) {
+  .hero-verified {
+    width: 100%;
   }
 }
 
@@ -607,12 +695,20 @@ video {
 }
 
 /* Work-section entries are 2-column grids: text + framed media.
-   Each is a separate clickable target. */
+   Each is a separate clickable target. With the wider container the
+   media column gets significantly more weight (a real preview, not a thumb). */
 .entries--work .entry {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 480px);
+  gap: 3rem;
   align-items: center;
+}
+
+@media (max-width: 900px) {
+  .entries--work .entry {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1043,7 +1139,7 @@ video {
 
 .finding-desc {
   color: var(--ink-3);
-  max-width: 68ch;
+  max-width: 90ch;
   line-height: 1.6;
 }
 
@@ -1074,7 +1170,7 @@ video {
   margin-bottom: 0.7rem;
   color: var(--ink-3);
   line-height: 1.6;
-  max-width: 66ch;
+  max-width: 90ch;
 }
 
 .experience-points li::before {
@@ -1098,7 +1194,7 @@ video {
   margin-bottom: 1.5rem;
   color: var(--ink-2);
   line-height: 1.6;
-  max-width: 70ch;
+  max-width: 90ch;
 }
 
 .education-list strong {
@@ -1161,7 +1257,7 @@ video {
 .about-body p {
   margin-bottom: 1.25rem;
   color: var(--ink-2);
-  max-width: 68ch;
+  max-width: 75ch;
   line-height: 1.7;
   font-size: 1.05rem;
 }
