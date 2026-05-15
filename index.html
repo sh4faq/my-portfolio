@@ -354,43 +354,63 @@
       <ol class="entries">
 
         <li class="entry finding">
-          <p class="finding-severity">Critical · CVSS 9.1 · duplicated · Intigriti</p>
-          <h3 class="finding-title">Parser allowlist bypass in an enterprise observability platform's SQL expression engine</h3>
+          <p class="finding-severity">
+            <span>Critical · CVSS 9.1 · duplicated · Intigriti</span>
+            <span class="finding-type">Monitoring &amp; observability</span>
+          </p>
+          <h3 class="finding-title">Parser allowlist bypass in the SQL expression engine</h3>
           <p class="finding-desc">The fix for CVE-2026-27876 only guarded one of five AST fields skipped by vitess <code>walkSubtree</code> (<code>Into</code>); <code>load_file()</code> inside an <code>ORDER BY</code> clause reaches arbitrary files on disk. Same primitive class as CVE-2024-9264.</p>
         </li>
 
         <li class="entry finding">
-          <p class="finding-severity">High · submitted, awaiting triage · HackerOne</p>
-          <h3 class="finding-title">Email injection on an enterprise LMS platform's Frappe-based contact form</h3>
+          <p class="finding-severity">
+            <span>High · submitted, awaiting triage · HackerOne</span>
+            <span class="finding-type">Crypto platform</span>
+          </p>
+          <h3 class="finding-title">Email injection in a Frappe-based contact form</h3>
           <p class="finding-desc">The <code>sender</code> parameter is used as the email recipient rather than the sender address, enabling attacker-controlled outbound mail from the platform's legitimate domain with full SPF/DKIM/DMARC alignment and no rate limit. Working end-to-end PoC with chained phishing payload.</p>
         </li>
 
         <li class="entry finding">
-          <p class="finding-severity">High · CVSS 8.6 · submitted May 14 2026, awaiting triage · Intigriti</p>
-          <h3 class="finding-title">SSRF in a major cloud provider's GenAI Knowledge Base web crawler</h3>
+          <p class="finding-severity">
+            <span>High · CVSS 8.6 · submitted May 14 2026, awaiting triage · Intigriti</span>
+            <span class="finding-type">Cloud infrastructure</span>
+          </p>
+          <h3 class="finding-title">SSRF in a GenAI Knowledge Base web crawler</h3>
           <p class="finding-desc">HTTP 302 redirect bypass of hostname deny-list and IP resolution check reaches 169.254.169.254 cloud metadata and internal infrastructure. A redirect trampoline grants access to cloud user-data and program-provided SSRF endpoints.</p>
         </li>
 
         <li class="entry finding">
-          <p class="finding-severity">High · CVSS 7.5 · duplicated · HackerOne</p>
-          <h3 class="finding-title">Admin user enumeration on an enterprise LMS platform via Cognito ForgotPassword</h3>
+          <p class="finding-severity">
+            <span>High · CVSS 7.5 · duplicated · HackerOne</span>
+            <span class="finding-type">Crypto platform</span>
+          </p>
+          <h3 class="finding-title">Admin user enumeration via Cognito ForgotPassword</h3>
           <p class="finding-desc">Unauthenticated GraphQL query leaks the admin <code>client_id</code>; Cognito's ForgotPassword endpoint returns distinct responses for valid versus invalid usernames (<code>CodeDeliveryDetails</code> vs <code>UserNotFoundException</code>), enabling admin email enumeration with a first-letter leak in the destination field. Patched shortly after testing.</p>
         </li>
 
         <li class="entry finding">
-          <p class="finding-severity">P5 / Informational by program triage · Bugcrowd</p>
-          <h3 class="finding-title">OAuth token exposure on a major consumer fitness platform</h3>
+          <p class="finding-severity">
+            <span>P5 / Informational by program triage · Bugcrowd</span>
+            <span class="finding-type">Fitness tracking app</span>
+          </p>
+          <h3 class="finding-title">OAuth token exposure on the public authorize page</h3>
           <p class="finding-desc">Access tokens embedded in <code>window.__STATE__</code> on the public OAuth authorize page enabled authentication bypass — confirmed account modification (<code>PUT</code> to a user resource returned <code>200 OK</code>, <code>first_name</code> modified) and mass user enumeration across IDs 1 through 231M+ via email, name, and query searches without rate limiting. Program ruled the modified account was a test user.</p>
         </li>
 
         <li class="entry finding">
-          <p class="finding-severity">CWE-798 / CWE-522 · duplicated · Bugcrowd</p>
-          <h3 class="finding-title">Hardcoded production API credentials in a DNS / internet infrastructure provider's domain product</h3>
+          <p class="finding-severity">
+            <span>CWE-798 / CWE-522 · duplicated · Bugcrowd</span>
+            <span class="finding-type">Domain registry</span>
+          </p>
+          <h3 class="finding-title">Hardcoded production API credentials in a public JS config</h3>
           <p class="finding-desc">Production API credentials hardcoded in a publicly-accessible JavaScript config on the provider's domain-suggestion product, granting unauthenticated access to all seven backend API endpoints. Triaged as duplicate of an earlier April 2025 report with restricted key scope.</p>
         </li>
 
         <li class="entry finding">
-          <p class="finding-severity">Medium · triaged valid</p>
+          <p class="finding-severity">
+            <span>Medium · triaged valid · HackerOne</span>
+          </p>
           <h3 class="finding-title">Unauthenticated mail relay</h3>
           <p class="finding-desc">Email spoofing with valid DKIM/SPF signatures. Provided CVSS analysis and remediation guidance.</p>
         </li>
