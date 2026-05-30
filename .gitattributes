@@ -1,0 +1,20 @@
+# Treat binary assets as binary so Git never applies line-ending (CRLF)
+# conversion, which would silently corrupt them.
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.mp4   binary
+*.mov   binary
+*.webm  binary
+*.woff  binary
+*.woff2 binary
+
+# Normalize line endings for text source files.
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.svg   text eol=lf
+*.md    text eol=lf

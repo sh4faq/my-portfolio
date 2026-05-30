@@ -1,5 +1,10 @@
 .vscode/
+.claude/
 .DS_Store
 *~$*
 __pycache__/
 *.pyc
+
+# Moved out of the repo (resume tooling + bug-bounty recon) — keep them out
+_tools/
+refs.txt
