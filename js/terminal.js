@@ -19,19 +19,19 @@
         help: () => [
             '<span class="terminal-output-text">Available commands:</span>',
             '',
-            '  <span class="cmd-highlight">about</span>        — who I am',
-            '  <span class="cmd-highlight">skills</span>       — technical skills',
-            '  <span class="cmd-highlight">work</span>         — selected projects',
-            '  <span class="cmd-highlight">findings</span>     — bug bounty findings',
-            '  <span class="cmd-highlight">experience</span>   — work history',
-            '  <span class="cmd-highlight">education</span>    — academic background',
-            '  <span class="cmd-highlight">certs</span>        — certifications',
-            '  <span class="cmd-highlight">contact</span>      — get in touch',
-            '  <span class="cmd-highlight">resume</span>       — download my resume',
-            '  <span class="cmd-highlight">clear</span>        — clear terminal',
-            '  <span class="cmd-highlight">whoami</span>       — who are you?',
-            '  <span class="cmd-highlight">ls</span>           — list sections',
-            '  <span class="cmd-highlight">cd &lt;section&gt;</span> — navigate to section',
+            '  <span class="cmd-highlight">about</span>        who I am',
+            '  <span class="cmd-highlight">skills</span>       technical skills',
+            '  <span class="cmd-highlight">work</span>         selected projects',
+            '  <span class="cmd-highlight">findings</span>     bug bounty findings',
+            '  <span class="cmd-highlight">experience</span>   work history',
+            '  <span class="cmd-highlight">education</span>    academic background',
+            '  <span class="cmd-highlight">certs</span>        certifications',
+            '  <span class="cmd-highlight">contact</span>      get in touch',
+            '  <span class="cmd-highlight">resume</span>       download my resume',
+            '  <span class="cmd-highlight">clear</span>        clear terminal',
+            '  <span class="cmd-highlight">whoami</span>       who are you?',
+            '  <span class="cmd-highlight">ls</span>           list sections',
+            '  <span class="cmd-highlight">cd &lt;section&gt;</span> navigate to section',
         ],
 
         about: () => [
@@ -69,10 +69,10 @@
         experience: () => [
             '<span class="terminal-success">Experience</span>',
             '',
-            '  <span class="cmd-highlight">Equinox</span>           Manager on Duty (2023 — Present)',
-            '  <span class="cmd-highlight">Yonkers Car Wash</span>  Website & operations (2025 — Present)',
-            '  <span class="cmd-highlight">Central Deli</span>      Co-owner (2023 — 2025)',
-            '  <span class="cmd-highlight">Bug Bounty</span>        HackerOne / Bugcrowd / Intigriti (2024 — Present)',
+            '  <span class="cmd-highlight">Equinox</span>           Manager on Duty (2023 to Present)',
+            '  <span class="cmd-highlight">Yonkers Car Wash</span>  Website & operations (2025 to Present)',
+            '  <span class="cmd-highlight">Central Deli</span>      Co-owner (2023 to 2025)',
+            '  <span class="cmd-highlight">Bug Bounty</span>        HackerOne / Bugcrowd / Intigriti (2024 to Present)',
             '',
             'Type <span class="cmd-highlight">cd experience</span> to scroll there.',
         ],
@@ -84,15 +84,15 @@
             '  B.S. Computer Science | GPA: 3.4 | Expected May 2026',
             '',
             '  <span class="cmd-highlight">Self-Directed Cybersecurity</span>',
-            '  CTFs, HackTheBox, bug bounties, PortSwigger Academy (2022–Present)',
+            '  CTFs, HackTheBox, bug bounties, PortSwigger Academy (2022 to Present)',
         ],
 
         certs: () => [
             '<span class="terminal-success">Certifications</span>',
             '',
-            '  ✓ CompTIA Security+ SY0-701 — July 2024',
-            '  ✓ Google Cybersecurity Certificate — August 2024',
-            '  ✓ CodePath Intermediate Cyber & Python — October 2024',
+            '  ✓ CompTIA Security+ SY0-701, July 2024',
+            '  ✓ Google Cybersecurity Certificate, August 2024',
+            '  ✓ CodePath Intermediate Cyber & Python, October 2024',
         ],
 
         contact: () => [
@@ -115,7 +115,7 @@
             return [];
         },
 
-        whoami: () => ['<span class="terminal-output-text">visitor — but feel free to explore.</span>'],
+        whoami: () => ['<span class="terminal-output-text">visitor, but feel free to explore.</span>'],
 
         ls: () => [
             '<span class="terminal-output-text">drwxr-xr-x  work/</span>',

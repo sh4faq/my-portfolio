@@ -194,6 +194,90 @@ video {
   font-size: 1rem;
 }
 
+/* ─────────────────────────── Section header row
+   Wraps the section title and any trailing meta chips
+   (e.g. bug bounty platform logos beside "Findings") on one row. */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ─────────────────────────── Platform logos (HackerOne, Bugcrowd, Intigriti)
+   Brand-colored square tiles, app-icon style, with white marks centered.
+   Each tile uses the platform's own brand color so they read instantly. */
+.platform-chips {
+  list-style: none;
+  display: flex;
+  gap: 1.1rem;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.platform-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  box-shadow:
+    0 6px 18px -8px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.platform-chip img {
+  display: block;
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.platform-chip:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08) saturate(1.1);
+  box-shadow:
+    0 12px 26px -8px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+}
+
+/* Brand-specific backgrounds. HackerOne uses its violet gradient,
+   Bugcrowd its signature orange, Intigriti its hot-pink/red brand. */
+.platform-chip--hackerone {
+  background: linear-gradient(135deg, #6B47F2 0%, #3022A8 100%);
+}
+
+.platform-chip--bugcrowd {
+  background: linear-gradient(135deg, #F58220 0%, #D85A12 100%);
+}
+
+.platform-chip--intigriti {
+  background: linear-gradient(135deg, #E5004C 0%, #A8003A 100%);
+}
+
+@media (max-width: 540px) {
+  .platform-chip {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+  }
+  .platform-chip img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .section-after {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -802,6 +886,19 @@ video {
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+/* Portrait variant for vertical photos. Keeps the same frame chrome
+   but lets the image breathe instead of getting cropped to a band. */
+.media-frame--portrait {
+  aspect-ratio: 4 / 5;
+}
+
+/* Stack two or more entry-media frames vertically inside one media column.
+   Used on experience entries that have a primary photo and a supporting one. */
+.entry-media-stack {
+  display: grid;
+  gap: 1rem;
+}
+
 .entry-media:hover .media-frame {
   border-color: rgba(200, 169, 106, 0.4);
   box-shadow:
@@ -1180,6 +1277,30 @@ video {
   font-size: 1.3rem;
 }
 
+/* Two-column experience entry: text column + framed photo.
+   Same skeleton as Work entries, but tighter media weight and
+   top-aligned so the photo sits next to the role meta, not the bullets. */
+.experience.entry--with-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .experience.entry--with-media {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .experience.entry--with-media {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
 .experience-points {
   list-style: none;
   padding: 0;
@@ -1195,7 +1316,7 @@ video {
 }
 
 .experience-points li::before {
-  content: '—';
+  content: '›';
   position: absolute;
   left: 0;
   top: 0;
